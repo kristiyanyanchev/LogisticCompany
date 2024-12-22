@@ -18,4 +18,8 @@ public class UserService {
         return (List<User>) userRepository.findAll();
 
     }
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).stream()
+                .findFirst().orElse(null);
+    }
 }
