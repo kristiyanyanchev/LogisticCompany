@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<table>
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>Source</th>
+    <th>Destination</th>
+    <th>Status</th>
+    <th>Sender</th>
+    <th>Recipient</th>
+    <th>Employee</th>
+
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="package: ${packages}">
+    <td th:text="${package.getId()}"></td>
+    <td th:text="${package.getSource().getName()}"></td>
+    <td th:text="${package.getDestination().getName()}"></td>
+    <td th:text="${package.getStatus()}"></td>
+    <td th:text="${package.getSender().getUsername()}"></td>
+    <td th:text="${package.getRecipient().getUsername()}"></td>
+    <td th:text="${package.getEmployee().getUsername()}"></td>
+    <td th:text="${package.getPrice()}"></td>
+
+
+
+
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
