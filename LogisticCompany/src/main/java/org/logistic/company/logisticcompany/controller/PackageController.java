@@ -43,6 +43,12 @@ public class PackageController {
         return "package/getPackagesTable";
     }
 
+    @GetMapping("/package/getPackagesReceivedOrSendBy")
+    public String getPackagesReceivedOrSendBy( @RequestParam("username") String username, Model model) {
+        model.addAttribute("packages", packageService.getPackagesReceivedOrSendBy(username));
+        return "package/getPackagesTable";
+    }
+
     @GetMapping("/package/income")
     public String getPackagesReceivedBy(@RequestParam("startDate") LocalDate startDate, @RequestParam("endDate") LocalDate endDate, Model model) {
         model.addAttribute("revenue", packageService.getAllIncome(startDate, endDate));
