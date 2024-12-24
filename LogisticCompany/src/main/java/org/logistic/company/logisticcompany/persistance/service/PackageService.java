@@ -40,6 +40,12 @@ public class PackageService {
     public List<Package> getPackagesReceivedBy(String username){
         return packageRepostiory.findByRecipient(userService.findByUsername(username));
     }
+    public List<Package> getPackagesReceivedOrSendBy(String username){
+        List<Package> packages = getPackagesReceivedBy(username);
+        packages.addAll(getPackagesSendBy(username));
+
+        return packages;
+    }
 
     public BigDecimal getAllIncome(LocalDate startDate, LocalDate endDate){
         List<Package> packages = getPackages();

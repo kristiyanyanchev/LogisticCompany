@@ -116,4 +116,8 @@ public class Package {
     public void setRecipient(User recipient) {
         this.recipient = recipient;
     }
+
+    public int getId() {
+        return id;
+    }
 }
