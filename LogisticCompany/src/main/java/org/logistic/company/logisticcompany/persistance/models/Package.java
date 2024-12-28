@@ -83,8 +83,6 @@ public class Package {
         this.source = source;
     }
 
-
-
     public User getEmployee() {
         return employee;
     }
@@ -115,5 +113,9 @@ public class Package {
 
     public void setRecipient(User recipient) {
         this.recipient = recipient;
+    }
+
+    public int getId() {
+        return id;
     }
 }
