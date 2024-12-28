@@ -26,4 +26,7 @@ public class UserService {
     public List<User> findAllEmployees() {
         return userRepository.findByRole("employee");
     }
+    public List<User> findAllClients() {
+        return userRepository.findByRole("client");
+    }
 }

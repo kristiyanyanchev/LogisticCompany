@@ -15,4 +15,5 @@ public interface PackageRepostiory extends CrudRepository<Package, Long> {
 
 
     List<Package> getAllBy();
+
 }

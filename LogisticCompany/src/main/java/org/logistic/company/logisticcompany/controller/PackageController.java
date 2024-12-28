@@ -1,11 +1,17 @@
 package org.logistic.company.logisticcompany.controller;
 
+import org.logistic.company.logisticcompany.persistance.service.OfficeService;
 import org.logistic.company.logisticcompany.persistance.service.PackageService;
+import org.logistic.company.logisticcompany.persistance.service.UserService;
+import org.logistic.company.logisticcompany.persistance.service.dto.PackageDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.time.LocalDate;
 
@@ -13,6 +19,10 @@ import java.time.LocalDate;
 public class PackageController {
     @Autowired
     PackageService packageService;
+    @Autowired
+    OfficeService officeService;
+    @Autowired
+    private UserService userService;
 
     @GetMapping
     public String index() {
@@ -53,6 +63,24 @@ public class PackageController {
     public String getPackagesReceivedBy(@RequestParam("startDate") LocalDate startDate, @RequestParam("endDate") LocalDate endDate, Model model) {
         model.addAttribute("revenue", packageService.getAllIncome(startDate, endDate));
         return "package/getIncome";
+    }
+
+    @PostMapping("/package")
+    public RedirectView packageSubmit(@ModelAttribute PackageDTO pkgDto, Model model) {
+        model.addAttribute("dto", pkgDto);
+        packageService.UpdatePackage(pkgDto);
+        return new RedirectView("/package/getAll");
+    }
+
+    @GetMapping("/package/updatePackage")
+    public String updatePackages( @RequestParam("package") long id, Model model) {
+        model.addAttribute("package", packageService.getPackageById(id));
+        model.addAttribute("offices",officeService.getOffices());
+        model.addAttribute("employees", userService.findAllEmployees());
+        model.addAttribute("clients", userService.findAllClients());
+        model.addAttribute("dto", packageService.getPackageDTOById(id));
+
+        return "package/updatePackage";
     }
 
 
