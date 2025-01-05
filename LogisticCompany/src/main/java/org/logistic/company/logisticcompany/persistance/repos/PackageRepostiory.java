@@ -1,5 +1,6 @@
 package org.logistic.company.logisticcompany.persistance.repos;
 
+import org.hibernate.Remove;
 import org.logistic.company.logisticcompany.persistance.models.Office;
 import org.logistic.company.logisticcompany.persistance.models.Package;
 import org.logistic.company.logisticcompany.persistance.models.User;

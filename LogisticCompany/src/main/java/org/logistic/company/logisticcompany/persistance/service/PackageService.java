@@ -29,6 +29,10 @@ public class PackageService {
         return packageRepostiory.findById(id).orElse(null);
     }
 
+    public void deletePackage(Long id){
+        packageRepostiory.deleteById(id);
+    }
+
     public List<Package> getPackages(){
         return packageRepostiory.getAllBy();
     }
@@ -69,7 +73,14 @@ public class PackageService {
     }
 
     private Package convertFromDto(PackageDTO dto) {
-        Package pkg = getPackageById(dto.getId());
+        Package pkg;
+        if(dto.getId() == null) {
+            pkg = new Package();
+        }
+        else{
+            pkg = getPackageById(dto.getId());
+        }
+
         pkg.setDestination(officeService.getOffice(dto.getDestination()));
         pkg.setSource(officeService.getOffice(dto.getSource()));
         pkg.setPrice(dto.getPrice());
@@ -77,6 +88,8 @@ public class PackageService {
         pkg.setEmployee(userService.findByUsername(dto.getEmployee()));
         pkg.setRecipient(userService.findByUsername(dto.getRecipient()));
         pkg.setSender(userService.findByUsername(dto.getSender()));
+        pkg.setSenderAddress(dto.getSenderAddress());
+        pkg.setRecipientAddress(dto.getRecipientAddress());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         formatter = formatter.withLocale(Locale.US );
@@ -100,6 +113,8 @@ public class PackageService {
         dto.setRecipient(pkg.getRecipient().getUsername());
         dto.setSendAt(pkg.getSendAt().toString());
         dto.setReceivedAt(pkg.getReceivedAt().toString());
+        dto.setSenderAddress(pkg.getSenderAddress());
+        dto.setRecipientAddress(pkg.getRecipientAddress());
         return dto;
 
     }

@@ -1,5 +1,6 @@
 package org.logistic.company.logisticcompany.controller;
 
+import org.logistic.company.logisticcompany.persistance.models.Package;
 import org.logistic.company.logisticcompany.persistance.service.OfficeService;
 import org.logistic.company.logisticcompany.persistance.service.PackageService;
 import org.logistic.company.logisticcompany.persistance.service.UserService;
@@ -7,10 +8,7 @@ import org.logistic.company.logisticcompany.persistance.service.dto.PackageDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.time.LocalDate;
@@ -72,9 +70,8 @@ public class PackageController {
         return new RedirectView("/package/getAll");
     }
 
-    @GetMapping("/package/updatePackage")
+    @GetMapping("/package/update")
     public String updatePackages( @RequestParam("package") long id, Model model) {
-        model.addAttribute("package", packageService.getPackageById(id));
         model.addAttribute("offices",officeService.getOffices());
         model.addAttribute("employees", userService.findAllEmployees());
         model.addAttribute("clients", userService.findAllClients());
@@ -82,6 +79,25 @@ public class PackageController {
 
         return "package/updatePackage";
     }
+    @GetMapping("/package/create")
+    public String createPackages(Model model) {
+        Package pkg = new Package();
+
+        model.addAttribute("package", null);
+        model.addAttribute("offices",officeService.getOffices());
+        model.addAttribute("employees", userService.findAllEmployees());
+        model.addAttribute("clients", userService.findAllClients());
+        model.addAttribute("dto", new PackageDTO());
+
+        return "package/updatePackage";
+    }
+    @GetMapping("/package/delete")
+    public RedirectView packageDelete( @RequestParam("package") long id, Model model) {
+        packageService.deletePackage(id);
+        return new RedirectView("/package/getAll");
+    }
+
+
 
 
 }

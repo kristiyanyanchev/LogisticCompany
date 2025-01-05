@@ -5,11 +5,30 @@ import java.time.LocalDate;
 
 public class PackageDTO {
     private Long id;
-   private String source;
-   private String destination;
-   private String sender;
-   private String recipient;
-   private String employee;
+   private String source = "";
+   private String destination = "";
+   private String sender = "";
+   private String recipient = "";
+   private String employee = "";
+   private String senderAddress = "";
+
+    public String getRecipientAddress() {
+        return recipientAddress;
+    }
+
+    public void setRecipientAddress(String recipientAddress) {
+        this.recipientAddress = recipientAddress;
+    }
+
+    public String getSenderAddress() {
+        return senderAddress;
+    }
+
+    public void setSenderAddress(String senderAddress) {
+        this.senderAddress = senderAddress;
+    }
+
+    private String recipientAddress = "";
     public Long getId() {
         return id;
     }
@@ -90,10 +109,10 @@ public class PackageDTO {
         this.status = status;
     }
 
-    private String sendAt;
-   private String receivedAt;
-   private BigDecimal price;
-   private String status;
+    private String sendAt = "";
+   private String receivedAt = "";
+   private BigDecimal price = BigDecimal.ZERO;
+   private String status =  "";
 
 
 }

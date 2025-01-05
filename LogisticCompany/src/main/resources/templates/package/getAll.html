@@ -9,27 +9,34 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <table class="table">
     <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">Source</th>
-            <th scope="col">Destination</th>
-            <th scope="col">Status</th>
-            <th scope="col">Sender</th>
-            <th scope="col">Recipient</th>
-            <th scope="col">Employee</th>
-
-            <th scope="col">Price</th>
-        </tr>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">Source</th>
+        <th scope="col">Sender Address</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Recipient Address</th>
+        <th scope="col">Sender</th>
+        <th scope="col">Recipient</th>
+        <th scope="col">Employee</th>
+        <th scope="col">SendAt</th>
+        <th scope="col">ReceivedAt</th>
+        <th scope="col">Status</th>
+        <th>Price</th>
+    </tr>
     </thead>
     <tbody>
     <tr th:each="package: ${packages}" th:scope="row">
         <td th:text="${package.getId()}"></td>
         <td th:text="${package.getSource().getName()}"></td>
+        <td th:text="${package.getSenderAddress()}"></td>
         <td th:text="${package.getDestination().getName()}"></td>
-        <td th:text="${package.getStatus()}"></td>
+        <td th:text="${package.getRecipientAddress()}"></td>
         <td th:text="${package.getSender().getUsername()}"></td>
         <td th:text="${package.getRecipient().getUsername()}"></td>
         <td th:text="${package.getEmployee().getUsername()}"></td>
+        <td th:text="${package.getSendAt()}"></td>
+        <td th:text="${package.getReceivedAt()}"></td>
+        <td th:text="${package.getStatus()}"></td>
         <td th:text="${package.getPrice()}"></td>
 
 
