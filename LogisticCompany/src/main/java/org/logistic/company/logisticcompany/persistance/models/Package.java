@@ -63,6 +63,7 @@ public class Package {
     private User sender;
 
     @ManyToOne
+
     @JoinColumn(name = "recipient_id")
     private User recipient;
 
@@ -75,6 +76,27 @@ public class Package {
     @Column(name = "received_at", nullable = false)
     private LocalDate receivedAt;
 
+    public String getSenderAddress() {
+        return SenderAddress;
+    }
+
+    public void setSenderAddress(String senderAddress) {
+        SenderAddress = senderAddress;
+    }
+
+    public String getRecipientAddress() {
+        return RecipientAddress;
+    }
+
+    public void setRecipientAddress(String recipientAddress) {
+        RecipientAddress = recipientAddress;
+    }
+
+    @Column(name = "sender_address")
+    private String SenderAddress;
+    @Column(name = "recipient_address")
+    private String RecipientAddress;
+
     public Office getSource() {
         return source;
     }
@@ -82,8 +104,6 @@ public class Package {
     public void setSource(Office source) {
         this.source = source;
     }
-
-
 
     public User getEmployee() {
         return employee;
@@ -115,5 +135,9 @@ public class Package {
 
     public void setRecipient(User recipient) {
         this.recipient = recipient;
+    }
+
+    public int getId() {
+        return id;
     }
 }
