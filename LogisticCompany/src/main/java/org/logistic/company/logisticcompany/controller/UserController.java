@@ -25,6 +25,13 @@ public class UserController {
         model.addAttribute("users",userService.findAllEmployees());
         return "user/employees";
     }
+
+    @GetMapping("/users/clients")
+    public String getAllClients(Model model) {
+        model.addAttribute("users",userService.findAllClients());
+        return "user/clients";
+    }
+
     @GetMapping("/users/update")
     public String update(@RequestParam("user") long id,Model model) {
         model.addAttribute("dto",userService.getUserDTOById(id));

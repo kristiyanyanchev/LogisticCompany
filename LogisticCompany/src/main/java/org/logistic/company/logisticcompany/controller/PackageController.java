@@ -24,6 +24,7 @@ public class PackageController {
 
     @GetMapping
     public String index() {
+
         return "package/index";
     }
 
@@ -44,6 +45,21 @@ public class PackageController {
         model.addAttribute("packages", packageService.getPackagesSendBy(username));
         return "package/getPackagesTable";
     }
+    @GetMapping("/package/getPackagesSendBySearch")
+    public String getPackagesRegisteredBySenderSearch( Model model) {
+        return "package/getPackagesSendByClientSearch";
+    }
+
+    @GetMapping("/package/getPackagesReceivedBySearch")
+    public String getPackagesRegisteredReceivedBySearch( Model model) {
+        return "package/getPackagesReceivedByClientSearch";
+    }
+
+    @GetMapping("/package/getPackagesRegisteredBySearch")
+    public String getPackagesRegisteredBySearch( Model model) {
+        return "package/getPackagesReceivedByClientSearch";
+    }
+
 
     @GetMapping("/package/getPackagesReceivedBy")
     public String getPackagesReceivedBy( @RequestParam("username") String username, Model model) {
@@ -56,6 +72,12 @@ public class PackageController {
         model.addAttribute("packages", packageService.getPackagesReceivedOrSendBy(username));
         return "package/getPackagesTable";
     }
+    @GetMapping("/package/getPackagesSendButNotDelivered")
+    public String getPackagesSendButNotDelivered(Model model) {
+        model.addAttribute("packages", packageService.getSendButNotDeliveredPackages());
+        return "package/getPackagesTable";
+    }
+
 
     @GetMapping("/package/income")
     public String getPackagesReceivedBy(@RequestParam("startDate") LocalDate startDate, @RequestParam("endDate") LocalDate endDate, Model model) {
