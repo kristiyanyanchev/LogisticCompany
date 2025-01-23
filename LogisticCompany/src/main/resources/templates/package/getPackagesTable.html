@@ -24,6 +24,7 @@
     <th scope="col">ReceivedAt</th>
     <th scope="col">Status</th>
     <th>Price</th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -40,6 +41,9 @@
     <td th:text="${package.getReceivedAt()}"></td>
     <td th:text="${package.getStatus()}"></td>
     <td th:text="${package.getPrice()}"></td>
+    <td>
+      <a th:href="@{/package/update(package=${package.id})}">Edit</a>
+    </td>
 
 
 
