@@ -90,6 +90,11 @@ public class PackageController {
         return "package/getPackagesTable";
     }
 
+    @GetMapping("/package/incomeInput")
+    public String getPackagesReceivedBy(Model model) {
+        return "package/getIncomeForm";
+    }
+
 
     @GetMapping("/package/income")
     public String getPackagesReceivedBy(@RequestParam("startDate") LocalDate startDate, @RequestParam("endDate") LocalDate endDate, Model model) {
