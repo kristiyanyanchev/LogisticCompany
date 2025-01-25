@@ -34,6 +34,10 @@
                 <option th:if="${dto.getRole() != 'client'}" value="client">client</option>
             </select>
         </div>
+        <div class="mb-3">
+            <label for="inputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword1" th:field="*{password}">
+        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
