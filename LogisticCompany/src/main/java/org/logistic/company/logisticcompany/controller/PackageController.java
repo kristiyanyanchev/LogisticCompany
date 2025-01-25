@@ -69,7 +69,7 @@ public class PackageController {
 
     @GetMapping("/package/getPackagesRegisteredBySearch")
     public String getPackagesRegisteredBySearch( Model model) {
-        return "package/getPackagesReceivedByClientSearch";
+        return "package/getPackagesRegisteredByEmployeeSearch";
     }
 
 
@@ -78,12 +78,20 @@ public class PackageController {
         model.addAttribute("packages", packageService.getPackagesReceivedBy(username));
         return "package/getPackagesTable";
     }
+    @GetMapping("/package/getPackagesRegisteredByМе")
+    public String getPackagesReceivedByMe( Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        model.addAttribute("packages", packageService.getPackagesRegisteredBy(currentPrincipalName));
+        return "package/getPackagesTable";
+    }
 
     @GetMapping("/package/getPackagesReceivedOrSendBy")
     public String getPackagesReceivedOrSendBy( @RequestParam("username") String username, Model model) {
         model.addAttribute("packages", packageService.getPackagesReceivedOrSendBy(username));
         return "package/getPackagesTable";
     }
+
     @GetMapping("/package/getPackagesSendButNotDelivered")
     public String getPackagesSendButNotDelivered(Model model) {
         model.addAttribute("packages", packageService.getSendButNotDeliveredPackages());
