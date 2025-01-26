@@ -8,6 +8,7 @@ import org.logistic.company.logisticcompany.persistance.service.dto.UserDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UserService {
@@ -55,8 +56,8 @@ public class UserService {
 
         User user = userDTO.getId() == null ? new User(): userRepository.findById(userDTO.getId()).orElse(null);
         user.setUsername(userDTO.getUsername());
-        user.setRole(userDTO.getRole());
-        user.setOffice(officeService.getOffice(userDTO.getOffice()));
+        user.setRole(Objects.equals(userDTO.getRole(),"") ? "client" : userDTO.getRole());
+        user.setOffice(Objects.equals(userDTO.getOffice(), "") ? null :officeService.getOffice(userDTO.getOffice()));
         user.setPassword("{noop}"+userDTO.getPassword());
         userRepository.save(user);
 

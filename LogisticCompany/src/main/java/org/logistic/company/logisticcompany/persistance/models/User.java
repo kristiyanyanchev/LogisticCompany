@@ -14,6 +14,9 @@ public class User {
     @Column(name = "username", nullable = false, length = Integer.MAX_VALUE)
     private String username;
 
+    @Column(name = "enabled", nullable = false)
+    private boolean enabled = true;
+
     public String getPassword() {
         return password;
     }

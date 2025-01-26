@@ -53,11 +53,22 @@ public class UserController {
         userService.updateUser(usrDto);
         return new RedirectView("/users/employees");
     }
+    @PostMapping("/register")
+    public RedirectView registerSubmit(@ModelAttribute UserDTO usrDto, Model model) {
+        model.addAttribute("dto", usrDto);
+        userService.updateUser(usrDto);
+        return new RedirectView("/login");
+    }
 
     @PostMapping("/users/delete")
     public RedirectView packageDelete(@RequestParam("user") long id, Model model) {
         userService.deleteUser(id);
         return new RedirectView("/users/clients");
+    }
+    @GetMapping("/register")
+    public String register(Model model) {
+        model.addAttribute("dto", new UserDTO());
+        return "user/register";
     }
 
 
