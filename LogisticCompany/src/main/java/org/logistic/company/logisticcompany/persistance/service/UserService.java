@@ -44,7 +44,7 @@ public class UserService {
         userDTO.setId(id);
         userDTO.setUsername(user.getUsername());
         userDTO.setRole(user.getRole());
-        userDTO.setOffice(user.getOffice().getName());
+        userDTO.setOffice(user.getRole().equals("client") ? "": user.getOffice().getName());
 
         return userDTO;
     }
@@ -57,8 +57,14 @@ public class UserService {
         User user = userDTO.getId() == null ? new User(): userRepository.findById(userDTO.getId()).orElse(null);
         user.setUsername(userDTO.getUsername());
         user.setRole(Objects.equals(userDTO.getRole(),"") ? "client" : userDTO.getRole());
+        if (Objects.equals(userDTO.getRole(), "employee") && ( userDTO.getOffice() == null || userDTO.getOffice().isEmpty())) {
+            userDTO.setOffice("Default");
+        }
         user.setOffice(Objects.equals(userDTO.getOffice(), "") ? null :officeService.getOffice(userDTO.getOffice()));
-        user.setPassword("{noop}"+userDTO.getPassword());
+        if(userDTO.getPassword() != null || !userDTO.getPassword().isEmpty()) {
+            user.setPassword("{noop}"+userDTO.getPassword());
+        }
+
         userRepository.save(user);
 
         Authority auth = new Authority(userDTO.getRole().equals("employee") ? "ROLE_ADMIN" : "ROLE_CLIENT", user);
