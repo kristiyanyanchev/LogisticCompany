@@ -65,38 +65,31 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">id</th>
-        <th scope="col">Source</th>
-        <th scope="col">Sender Address</th>
-        <th scope="col">Destination</th>
-        <th scope="col">Recipient Address</th>
-        <th scope="col">Sender</th>
-        <th scope="col">Recipient</th>
-        <th scope="col">Employee</th>
-        <th scope="col">SendAt</th>
-        <th scope="col">ReceivedAt</th>
-        <th scope="col">Status</th>
-        <th>Price</th>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">City</th>
+        <th scope="col">Address</th>
+        <th scope="col">Working Hours</th>
+
     </tr>
     </thead>
     <tbody>
-    <tr th:each="package: ${packages}" th:scope="row">
-        <td th:text="${package.getId()}"></td>
-        <td th:text="${package.getSource().getName()}"></td>
-        <td th:text="${package.getSenderAddress()}"></td>
-        <td th:text="${package.getDestination().getName()}"></td>
-        <td th:text="${package.getRecipientAddress()}"></td>
-        <td th:text="${package.getSender().getUsername()}"></td>
-        <td th:text="${package.getRecipient().getUsername()}"></td>
-        <td th:text="${package.getEmployee().getUsername()}"></td>
-        <td th:text="${package.getSendAt()}"></td>
-        <td th:text="${package.getReceivedAt()}"></td>
-        <td th:text="${package.getStatus()}"></td>
-        <td th:text="${package.getPrice()}"></td>
+    <tr th:each="office: ${offices}" th:scope="row">
+        <td th:text="${office.getId()}"></td>
+        <td th:text="${office.getName()}"></td>
+        <td th:text="${office.getCity()}"></td>
+        <td th:text="${office.getAddress()}"></td>
+        <td th:text="${office.getWorkingHours()}"></td>
+        <td>
+            <div>
+                <a th:href="@{/office/update(office=${office.id})}">Edit</a>
+            </div>
+            <div>
+                <a th:href="@{/office/delete(office=${office.id})}">Delete</a>
+            </div>
 
 
-
-
+        </td>
     </tr>
     </tbody>
 </table>

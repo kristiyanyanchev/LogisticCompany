@@ -11,4 +11,5 @@ public interface OfficeRepository extends CrudRepository<Office, Long> {
     List<Office> findByName(String name);
     List<Office> findByCity(String city);
 
+    Office getFirstById(int id);
 }
