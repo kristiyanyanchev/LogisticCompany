@@ -1,7 +1,5 @@
 package org.logistic.company.logisticcompany.persistance.service.dto;
 
-import jakarta.persistence.Column;
-
 public class OfficeDTO {
     private String name;
     private String address;

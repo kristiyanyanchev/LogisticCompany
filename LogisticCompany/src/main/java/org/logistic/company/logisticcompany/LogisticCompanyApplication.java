@@ -2,7 +2,6 @@ package org.logistic.company.logisticcompany;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.logistic.company.logisticcompany.persistance.repos.PackageRepostiory;
 import org.logistic.company.logisticcompany.persistance.repos.UserRepository;
 import org.logistic.company.logisticcompany.persistance.service.PackageService;
 import org.springframework.boot.CommandLineRunner;

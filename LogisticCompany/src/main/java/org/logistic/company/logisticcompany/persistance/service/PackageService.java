@@ -1,16 +1,13 @@
 package org.logistic.company.logisticcompany.persistance.service;
 
 import org.logistic.company.logisticcompany.persistance.models.Package;
-import org.logistic.company.logisticcompany.persistance.models.User;
 import org.logistic.company.logisticcompany.persistance.repos.PackageRepostiory;
 import org.logistic.company.logisticcompany.persistance.service.dto.PackageDTO;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 

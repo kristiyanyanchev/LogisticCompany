@@ -1,7 +1,6 @@
 package org.logistic.company.logisticcompany.persistance.service.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 public class PackageDTO {
     private Long id;

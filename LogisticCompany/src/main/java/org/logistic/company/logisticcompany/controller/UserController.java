@@ -2,11 +2,8 @@ package org.logistic.company.logisticcompany.controller;
 
 import org.logistic.company.logisticcompany.persistance.service.OfficeService;
 import org.logistic.company.logisticcompany.persistance.service.UserService;
-import org.logistic.company.logisticcompany.persistance.service.dto.PackageDTO;
 import org.logistic.company.logisticcompany.persistance.service.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

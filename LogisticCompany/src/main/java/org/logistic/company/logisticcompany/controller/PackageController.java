@@ -1,6 +1,5 @@
 package org.logistic.company.logisticcompany.controller;
 
-import org.logistic.company.logisticcompany.persistance.models.Package;
 import org.logistic.company.logisticcompany.persistance.service.OfficeService;
 import org.logistic.company.logisticcompany.persistance.service.PackageService;
 import org.logistic.company.logisticcompany.persistance.service.UserService;
@@ -128,7 +127,6 @@ public class PackageController {
     }
     @GetMapping("/package/create")
     public String createPackages(Model model) {
-        Package pkg = new Package();
 
         model.addAttribute("package", null);
         model.addAttribute("offices",officeService.getOffices());
