@@ -23,11 +23,11 @@ public class PackageController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public String index() {
+    // @GetMapping
+    // public String index() {
 
-        return "package/index";
-    }
+    //     return "package/index";
+    // }
 
     @GetMapping("/package/getAll")
     public String getAll(Model model) {

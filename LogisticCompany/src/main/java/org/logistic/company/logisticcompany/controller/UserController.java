@@ -19,28 +19,55 @@ public class UserController {
     @Autowired
     OfficeService officeService;
 
+    @GetMapping("/register")
+    public String register(Model model) {
+        model.addAttribute("dto", new UserDTO());
+        return "user/register";
+    }
+
+    @PostMapping("/register")
+    public RedirectView registerSubmit(@ModelAttribute UserDTO usrDto, Model model) {
+        model.addAttribute("dto", usrDto);
+        userService.updateUser(usrDto);
+        return new RedirectView("users/login");
+    }
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("dto", new UserDTO());
+        return "user/login";
+    }
+
+    @PostMapping("/login")
+    public RedirectView loginSubmit(@ModelAttribute UserDTO usrDto, Model model) {
+        model.addAttribute("dto", usrDto);
+        userService.updateUser(usrDto);
+        return new RedirectView("home/index");
+    }
+
     @GetMapping("/users/employees")
     public String getAll(Model model) {
-        model.addAttribute("users",userService.findAllEmployees());
+        model.addAttribute("users", userService.findAllEmployees());
         return "user/employees";
     }
 
     @GetMapping("/users/clients")
     public String getAllClients(Model model) {
-        model.addAttribute("users",userService.findAllClients());
+        model.addAttribute("users", userService.findAllClients());
         return "user/clients";
     }
 
     @GetMapping("/users/update")
-    public String update(@RequestParam("user") long id,Model model) {
+    public String update(@RequestParam("user") long id, Model model) {
         model.addAttribute("dto", userService.getUserDTOById(id));
-        model.addAttribute("offices",officeService.getOffices());
+        model.addAttribute("offices", officeService.getOffices());
         return "user/updateUser";
     }
+
     @GetMapping("/users/create")
     public String create(Model model) {
         model.addAttribute("dto", new UserDTO());
-        model.addAttribute("offices",officeService.getOffices());
+        model.addAttribute("offices", officeService.getOffices());
         return "user/updateUser";
     }
 
@@ -50,23 +77,11 @@ public class UserController {
         userService.updateUser(usrDto);
         return new RedirectView("/users/employees");
     }
-    @PostMapping("/register")
-    public RedirectView registerSubmit(@ModelAttribute UserDTO usrDto, Model model) {
-        model.addAttribute("dto", usrDto);
-        userService.updateUser(usrDto);
-        return new RedirectView("/login");
-    }
 
     @PostMapping("/users/delete")
     public RedirectView packageDelete(@RequestParam("user") long id, Model model) {
         userService.deleteUser(id);
         return new RedirectView("/users/clients");
     }
-    @GetMapping("/register")
-    public String register(Model model) {
-        model.addAttribute("dto", new UserDTO());
-        return "user/register";
-    }
-
 
 }
