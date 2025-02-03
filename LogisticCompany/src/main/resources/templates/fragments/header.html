@@ -17,9 +17,12 @@
             </div>
             <div class="menu-items-wrapper">
                 <ul class="menu-items">
-                    <li><a href="index.html">Начало</a></li>
+                    <li><a th:href="@{/}">Начало</a></li>
                     <li><a href="services.html">Услуги</a></li>
-                    <li><a th:href="@{/offices}">Офиси и автомати</a></li>
+                    <li th:if="${#authorization.expression('isAuthenticated()')}">
+                        <a th:href="|@{/package/getPackages/{userId}(userId=${user.id})}|">Преглед на пратки</a>
+                    </li>
+                    <li><a th:href="@{/office}">Офиси и автомати</a></li>
                     <li><a href="index.html">За нас</a></li>
                 </ul>
             </div>
