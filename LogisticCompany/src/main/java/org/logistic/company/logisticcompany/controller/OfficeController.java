@@ -1,8 +1,5 @@
 package org.logistic.company.logisticcompany.controller;
 
-import java.util.List;
-
-import org.logistic.company.logisticcompany.persistance.models.Office;
 import org.logistic.company.logisticcompany.persistance.service.OfficeService;
 import org.logistic.company.logisticcompany.persistance.service.dto.OfficeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +16,10 @@ public class OfficeController {
     @Autowired
     OfficeService officeService;
 
-    @GetMapping("api/office")
-    public List<Office> getAllOffices(Model model) {
-        return officeService.getOffices();
+    @GetMapping("/office")
+    public String getAllOffices(Model model) {
+        model.addAttribute("offices", officeService.getOffices());
+        return "office/getAll";
     }
 
     @GetMapping("/office/update")
