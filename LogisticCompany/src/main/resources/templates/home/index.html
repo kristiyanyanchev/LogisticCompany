@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <link rel="stylesheet" th:href="@{/css/nav.css}" href="../../static/css/nav.css">
+  <link rel="stylesheet" th:href="@{/css/reset.css}" href="../../static/css/reset.css">
+  <link rel="stylesheet" th:href="@{/css/typography.css}" href="../../static/css/typography.css">
+  <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css">
+
+  <script src="https://kit.fontawesome.com/6592283e01.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="site">
+    <header class="site-header">
+      <nav class="navbar">
+        <div class="logo-wrapper">
+          <a href="updatePackage.html" class="logo"><img th:src="@{/images/logo.png}" alt=""></a>
+          <h2>Logistic Company</h2>
+        </div>
+        <div class="menu-items-wrapper">
+          <ul class="menu-items">
+            <li><a href="index.html">Начало</a></li>
+            <li><a href="index.html">Услуги</a></li>
+            <li><a href="index.html">Офиси и автомати</a></li>
+            <li><a href="index.html">За нас</a></li>
+
+          </ul>
+        </div>
+        <div class="auth-items-wrapper">
+          <ul class="auth-items">
+            <li class="nav-item" th:unless="${#authorization.expression('isAuthenticated()')}">
+              <a class="nav-link" th:href="@{/login}">Вход</a>
+            </li>
+            <li class="nav-item" th:unless="${#authorization.expression('isAuthenticated()')}">
+              <a class="nav-link" th:href="@{/register}">Регистрация</a>
+            </li>
+            <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+              <a class="nav-link" th:href="@{/profile}">Профил</a>
+            </li>
+            <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+              <a class="nav-link" th:href="@{/logout}">Изход</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="main">
+      <div class="main-content-header">
+        <div class="image-wrapper">
+          <img class="logo-bg" th:src="@{/images/logistic_company_bg.webp}" alt="">
+        </div>
+
+        <div class="landing-context">
+          <h2>Добре дошли в ПроТранс България!</h2>
+          <p>Ние сме надеждна транспортна компания в България, предлагаща бързи, сигурни и ефективни решения за превоз
+            на товари и пътници. С модерен автопарк и екип от професионалисти, гарантираме високо качество на услугите и
+            навременни доставки. Доверете се на нас за безопасен и удобен транспорт!
+          </p>
+        </div>
+
+        <div class="packing-note-wrapper">
+          <div class="prices-per-kg">
+            <p class="package-price-header">Цена за пратка/кг<i class="fa-solid fa-cubes"></i></p>
+            <div class="cards-wrapper">
+              <div class="card">
+                <p class="card-text">до 3кг</p>
+                <p class="card-price">2.99/4.58лв</p>
+              </div>
+              <div class="card">
+                <p class="card-text">до 6кг</p>
+                <p class="card-price">6.37лв</p>
+              </div>
+              <div class="card">
+                <p class="card-text">до 10кг</p>
+                <p class="card-price">7.85лв</p>
+              </div>
+              <div class="card">
+                <p class="card-text">до 20кг</p>
+                <p class="card-price">14.02лв</p>
+              </div>
+              <div class="card">
+                <p class="card-text">над 20кг</p>
+                <p class="card-price">14.02лв + 0.60лв/кг</p>
+              </div>
+            </div>
+          </div>
+          <div class="track-package">
+            <h2>Следете вашата пратка</h2>
+            <form class="tracking-form" action="">
+              <div class="input-wrapper">
+                <input type="text" id="tracking-number" name="tracking-number">
+                <label for="tracking-number">Номер на пратката</label>
+              </div>
+              <button type="submit" class="btn-submit">Търсене <i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <p class="tracking-info">* Можете да поставите, номера на товарителницата, предоставен от вашия
+              подател/куриер</p>
+          </div>
+        </div>
+        <section class="services-wrapper">
+          <h2>Услуги</h2>
+          <div class="services">
+            <div class="service">
+              <a href="">
+                <i class="fa-solid fa-truck"></i>
+                <p>Доставка на пратки</p>
+              </a>
+            </div>
+            <div class="service">
+              <a href="">
+                <i class="fa-solid fa-globe"></i>
+                <p>Международни услуги</p>
+              </a>
+            </div>
+            <div class="service">
+              <a href="">
+                <i class="fa-solid fa-building-circle-check"></i>
+                <p>Офиси и Автомати</p>
+              </a>
+            </div>
+            <div class="service">
+              <a href="">
+                <i class="fa-solid fa-calculator"></i>
+                <p>Изчисли цена</p>
+              </a>
+            </div>
+            <div class="service">
+              <a href="">
+                <i class="fa-solid fa-newspaper"></i>
+                <p>Новини</p>
+              </a>
+            </div>
+            <div class="service">
+              <a href="">
+                <i class="fa-solid fa-people-roof"></i>
+                <p>Корпоративна устойчивост</p>
+              </a>
+            </div>
+
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

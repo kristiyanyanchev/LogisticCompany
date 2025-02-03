@@ -44,6 +44,14 @@
                         <span class="bubble-error"></span> 
                     </div>
                 </div>
+                <div class="input-wrapper">
+                    <input type="password" class="form-control" id="inputPasswordConfirm" th:field="*{password}" required />
+                    <label for="inputPassword1" class="form-label">Password</label>
+                    <div class="invalid-feedback">
+                        <i class="fa-solid fa-circle-info"></i> 
+                        <span class="bubble-error"></span> 
+                    </div>
+                </div>
             </div>
 
             <button type="submit" class="btn btn-submit">Submit</button>
