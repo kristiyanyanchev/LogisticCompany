@@ -13,37 +13,42 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SecurityConfig {
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/profile").authenticated()
-                        .requestMatchers("/package/getPackagesForCurrentUser").hasRole("USER")
-                        .requestMatchers("/package/**").hasRole("ADMIN")
-                        .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-                        .requestMatchers("/home/**").permitAll()
-                        .requestMatchers("/").permitAll()
-                        .requestMatchers("/register").permitAll()
-                )
-                .formLogin((form) -> form
-                        .loginPage("/login")
-                        .permitAll()
-                )
-                .logout(logout -> logout.permitAll());
-                
-        return http.build();
-    }
+        @Bean
+        public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+                http
+                        .authorizeHttpRequests(auth -> auth
+                                .requestMatchers("/profile").authenticated()
+                                .requestMatchers("/package/getPackagesForCurrentUser").hasRole("USER")
+                                .requestMatchers("/package/**").hasRole("ADMIN")
+                                .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                                .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                                .requestMatchers("/home/**").permitAll()
+                                .requestMatchers("/").permitAll()
+                                .requestMatchers("/register").permitAll()
+                                .requestMatchers("/fragments/**").permitAll())
+                        .formLogin((form) -> form
+                                .loginPage("/login")
+                                .defaultSuccessUrl("/", true)
+                                .permitAll())
+                        .logout((logout) -> logout
+                                .logoutUrl("/logout")
+                                .logoutSuccessUrl("/")
+                                .permitAll())
+                        .csrf(csrf -> csrf
+                                .ignoringRequestMatchers("/logout"));
 
-    @Bean
-    public UserDetailsService userDetailsService(DataSource dataSource) {
-        UserDetails userDetails = User.builder()
-                .username("user")
-                .password("{noop}password")
-                .roles("USER")
-                .build();
+                return http.build();
+        }
 
-        return new JdbcUserDetailsManager(dataSource);
-    }
+        @Bean
+        public UserDetailsService userDetailsService(DataSource dataSource) {
+                UserDetails userDetails = User.builder()
+                                .username("user")
+                                .password("{noop}password")
+                                .roles("USER")
+                                .build();
+
+                return new JdbcUserDetailsManager(dataSource);
+        }
 
 }

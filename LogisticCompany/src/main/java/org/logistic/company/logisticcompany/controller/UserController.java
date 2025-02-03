@@ -38,13 +38,6 @@ public class UserController {
         return "user/login";
     }
 
-    @PostMapping("/login")
-    public RedirectView loginSubmit(@ModelAttribute UserDTO usrDto, Model model) {
-        model.addAttribute("dto", usrDto);
-        userService.updateUser(usrDto);
-        return new RedirectView("home/index");
-    }
-
     @GetMapping("/users/employees")
     public String getAll(Model model) {
         model.addAttribute("users", userService.findAllEmployees());
