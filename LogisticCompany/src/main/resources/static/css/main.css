@@ -117,6 +117,11 @@
     gap: 1em;
 }
 
+.track-package h2{
+    font-size: 1.5em;
+    color: #ffffff;
+}
+
 .track-package .tracking-form .input-wrapper{
     position: relative;
 }
