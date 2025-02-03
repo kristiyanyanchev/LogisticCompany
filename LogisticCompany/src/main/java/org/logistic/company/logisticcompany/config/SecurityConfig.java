@@ -2,7 +2,6 @@ package org.logistic.company.logisticcompany.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,22 +17,21 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/profile").authenticated()
-                        .requestMatchers("/register").permitAll()
                         .requestMatchers("/package/getPackagesForCurrentUser").hasRole("USER")
                         .requestMatchers("/package/**").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
-                        .anyRequest().authenticated()
-
+                        .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers("/home/**").permitAll()
+                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/register").permitAll()
                 )
-                .formLogin(form -> form
+                .formLogin((form) -> form
                         .loginPage("/login")
+                        .permitAll()
                 )
-                .logout(logout -> logout
-                        .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login")
-                );
+                .logout(logout -> logout.permitAll());
+                
         return http.build();
     }
 
