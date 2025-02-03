@@ -18,14 +18,16 @@ public class SecurityConfig {
                 http
                         .authorizeHttpRequests(auth -> auth
                                 .requestMatchers("/profile").authenticated()
-                                .requestMatchers("/package/getPackagesForCurrentUser").hasRole("USER")
-                                .requestMatchers("/package/**").hasRole("ADMIN")
-                                .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                                .requestMatchers("/package/**").hasRole("CLIENT")
+                                .requestMatchers("/user/**").hasAnyRole("CLIENT", "ADMIN")
                                 .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                                 .requestMatchers("/home/**").permitAll()
                                 .requestMatchers("/").permitAll()
                                 .requestMatchers("/register").permitAll()
-                                .requestMatchers("/fragments/**").permitAll())
+                                .requestMatchers("/fragments/**").permitAll()
+                                .requestMatchers("/office").permitAll()
+
+                        )
                         .formLogin((form) -> form
                                 .loginPage("/login")
                                 .defaultSuccessUrl("/", true)
