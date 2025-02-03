@@ -3,6 +3,7 @@ package org.logistic.company.logisticcompany.persistance.service;
 import org.logistic.company.logisticcompany.persistance.models.Authority;
 import org.logistic.company.logisticcompany.persistance.models.User;
 import org.logistic.company.logisticcompany.persistance.repos.AuthoritiesRepository;
+import org.logistic.company.logisticcompany.persistance.repos.AuthorityPK;
 import org.logistic.company.logisticcompany.persistance.repos.UserRepository;
 import org.logistic.company.logisticcompany.persistance.service.dto.UserDTO;
 import org.springframework.stereotype.Service;
@@ -55,6 +56,7 @@ public class UserService {
     public void updateUser(UserDTO userDTO) {
 
         User user = userDTO.getId() == null ? new User(): userRepository.findById(userDTO.getId()).orElse(null);
+        List<Authority> auths = authoritiesRepository.findByUsername(user);
         user.setUsername(userDTO.getUsername());
         user.setRole(Objects.equals(userDTO.getRole(),"") ? "client" : userDTO.getRole());
         if (Objects.equals(userDTO.getRole(), "employee") && ( userDTO.getOffice() == null || userDTO.getOffice().isEmpty())) {
@@ -65,8 +67,15 @@ public class UserService {
             user.setPassword("{noop}"+userDTO.getPassword());
         }
 
-        userRepository.save(user);
+        if(!auths.isEmpty()) {
+            for (Authority auth : auths) {
+                auth.setUsername(user);
+            }
+            authoritiesRepository.saveAll(auths);
 
+        }
+        //userRepository.save(user);
+        userRepository.save(user);
         Authority auth = new Authority(userDTO.getRole().equals("employee") ? "ROLE_ADMIN" : "ROLE_CLIENT", user);
         authoritiesRepository.save(auth);
     }
