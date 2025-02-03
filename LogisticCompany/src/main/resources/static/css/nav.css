@@ -35,16 +35,23 @@
 }
 
 .navbar .menu-items-wrapper .menu-items a,
-.navbar .auth-items-wrapper .auth-items a{
+.navbar .auth-items-wrapper .auth-items a,
+.navbar .auth-items-wrapper .auth-items .btn-exit{
     position: relative;
     color: #F1F7ED;
     font-weight: bold;
+    outline: none;
+    border: none;
+    background: none;
+    font-size: 16px;
     text-decoration: none;
+    cursor: pointer;
     padding: 0.5em;
 }
 
 .navbar .menu-items-wrapper .menu-items a::after,
-.navbar .auth-items-wrapper .auth-items a::after{
+.navbar .auth-items-wrapper .auth-items a::after,
+.navbar .auth-items-wrapper .auth-items .btn-exit::after{
     content: '';
     position: absolute;
     width: 0;
@@ -56,6 +63,7 @@
 }
 
 .navbar .menu-items-wrapper .menu-items a:hover::after,
-.navbar .auth-items-wrapper .auth-items a:hover::after{
+.navbar .auth-items-wrapper .auth-items a:hover::after,
+.navbar .auth-items-wrapper .auth-items .btn-exit:hover::after{
     width: 100%;
 }

@@ -170,20 +170,20 @@
 }
 
 .services-wrapper{
-    width: 80%;
+    width: 90%;
     margin: 1em auto;
     text-align: center;
 }
 
 .services-wrapper .services{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
     row-gap: 1em;
+    column-gap: 1em;
     padding: 1em;
 }
 
 .services-wrapper .services .service a{
-    width: 490px;
     height: 150px;
     display: flex;
     flex-direction: column;
