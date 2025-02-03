@@ -1,0 +1,201 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.site-header {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.site-header .navbar {
+    background: #52489C;
+    color: #020202;
+    border-radius: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem; /* Увеличаване на вътрешното отстояние за по-голяма височина */
+}
+
+.site-header .navbar .logo-wrapper {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+}
+
+.site-header .navbar .logo-wrapper img {
+    width: 50px;
+    margin-right: 0.5em; /* Добавяне на разстояние между логото и текста */
+}
+
+.navbar .menu-items-wrapper .menu-items,
+.navbar .auth-items-wrapper .auth-items {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0.5em;
+    list-style-type: none;
+}
+
+.navbar .menu-items-wrapper .menu-items a,
+.navbar .auth-items-wrapper .auth-items a {
+    position: relative;
+    color: #F1F7ED;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0.5em;
+    font-size: 20px; /* Увеличаване на размера на текста */
+}
+
+.navbar .menu-items-wrapper .menu-items a::after,
+.navbar .auth-items-wrapper .auth-items a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #F1F7ED;
+    bottom: 0.3em;
+    left: 0;
+    transition: 0.5s;
+}
+
+.navbar .menu-items-wrapper .menu-items a:hover::after,
+.navbar .auth-items-wrapper .auth-items a:hover::after {
+    width: 100%;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    width: 100%;
+}
+
+.form-wrapper {
+    background-color: #fff;
+    padding: 4rem; /* Увеличаване на вътрешното отстояние */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 140%;
+    max-width: 1000px; /* Увеличаване на максималната ширина */
+    margin-bottom: 2rem;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-header h2 {
+    font-size: 2rem; /* Увеличаване на размера на текста */
+    color: #333;
+}
+
+h3 {
+    font-size: 1.75rem; /* Увеличаване на размера на текста */
+    color: #333;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5rem;
+    margin-top: 2rem; /* Добавяне на разстояние между секциите */
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.input-wrapper input,
+.input-wrapper select,
+.input-wrapper textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.input-wrapper label {
+    position: absolute;
+    top: -0.75rem;
+    left: 0.75rem;
+    background: #fff;
+    padding: 0 0.25rem;
+    color: #333;
+    font-weight: bold;
+    font-size: 1rem; /* Увеличаване на размера на текста */
+}
+
+.radio-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #e0be91;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+}
+
+.btn:hover {
+    background-color: #caac84;
+    transform: scale(1.02);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5rem; /* Добавяне на разстояние между бутоните */
+    margin-top: 2rem; /* Преместване на бутоните малко по-надолу */
+}
+
+.btn-clear {
+    background-color: #ff4d4d;
+}
+
+.btn-clear:hover {
+    background-color: #e04444;
+}
+
+.btn-save-template,
+.btn-calculate,
+.btn-complete {
+    background-color: #4caf50;
+}
+
+.btn-save-template:hover,
+.btn-calculate:hover,
+.btn-complete:hover {
+    background-color: #45a049;
+}
+
+#senderNote,
+#recipientNote{
+    resize: none;
+    height: 150px;
+}

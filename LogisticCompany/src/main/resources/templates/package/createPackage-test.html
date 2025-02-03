@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/nav.css">
+    <link rel="stylesheet" href="../../static/css/reset.css">
+    <link rel="stylesheet" href="../../static/css/typography.css">
+    <link rel="stylesheet" href="../../static/css/main.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/updatePackage-test.css}" href="../../static/css/updatePackage-test.css" />
+    <title>Създаване на Пратка</title>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="logo-wrapper">
+                <a href="updatePackage.html" class="logo"><img src="../../static/images/logo.png" alt=""></a>
+                <h2>Logistic Company</h2>
+            </div>
+            <div class="menu-items-wrapper">
+                <ul class="menu-items">
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="index.html">Услуги</a></li>
+                    <li><a href="index.html">Офиси и автомати</a></li>
+                    <li><a href="index.html">За нас</a></li>
+                </ul>
+            </div>
+            <div class="auth-items-wrapper">
+                <ul class="auth-items">
+                    <li><a href="../user/login.html">Вход</a></li>
+                    <li><a href="../user/register.html">Регистрация</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="form-wrapper">
+            <div class="form-header">
+                <div class="img-wrapper">
+                    
+                </div>
+                <h2>Създай пратка</h2>
+            </div>
+            <form class="form" th:action="@{/updatePackage}" th:object="${dto}" method="update">
+                <h3>Информация за Подател</h3>
+                <div class="inputs">
+                    <div class="input-wrapper">
+                        <input type="text" id="senderName" th:field="*{senderName}" class="form-control" required>
+                        <label for="senderName" class="input-group-text">Име</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" id="senderAddress" th:field="*{senderAddress}" class="form-control" required >
+                        <label for="senderAddress" class="input-group-text">Адрес</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" id="senderPhone" th:field="*{senderPhone}" class="form-control" required >
+                        <label for="senderPhone" class="input-group-text">Телефон</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="email" id="senderEmail" th:field="*{senderEmail}" class="form-control" required >
+                        <label for="senderEmail" class="input-group-text">Имейл</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" id="senderCity" th:field="*{senderCity}" class="form-control" required >
+                        <label for="senderCity" class="input-group-text">Населено място</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" id="senderPostalCode" th:field="*{senderPostalCode}" class="form-control" required >
+                        <label for="senderPostalCode" class="input-group-text">Пощенски код</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <textarea id="senderNote" th:field="*{senderNote}" class="form-control"></textarea>
+                        <label for="senderNote" class="input-group-text">Уточнение</label>
+                    </div>
+                </div>
+
+                <h3>Информация за Получател</h3>
+                <div class="inputs">
+                    <div class="input-wrapper">
+                        <input type="text" id="recipientName" th:field="*{recipientName}" class="form-control" required>
+                        <label for="recipientName" class="input-group-text">Име</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" id="recipientAddress" th:field="*{recipientAddress}" class="form-control" required>
+                        <label for="recipientAddress" class="input-group-text">Адрес</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" id="recipientPhone" th:field="*{recipientPhone}" class="form-control" required>
+                        <label for="recipientPhone" class="input-group-text">Телефон</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="email" id="recipientEmail" th:field="*{recipientEmail}" class="form-control" required>
+                        <label for="recipientEmail" class="input-group-text">Имейл</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" id="recipientCity" th:field="*{recipientCity}" class="form-control" required>
+                        <label for="recipientCity" class="input-group-text">Населено място</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" id="recipientPostalCode" th:field="*{recipientPostalCode}" class="form-control" required>
+                        <label for="recipientPostalCode" class="input-group-text">Пощенски код</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <textarea id="recipientNote" th:field="*{recipientNote}" class="form-control"></textarea>
+                        <label for="recipientNote" class="input-group-text">Уточнение</label>
+                    </div>
+                </div>
+
+                <h3>Параметри на Пратката</h3>
+                <div class="inputs">
+                    <div class="input-wrapper">
+                        <input type="date" id="sendDate" th:field="*{sendDate}" class="form-control" required>
+                        <label for="sendDate" class="input-group-text">Изпращане на</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <select id="service" th:field="*{service}" class="form-control">
+                            <option value="Избери">-Избери-</option>
+                            <option value="Стандартна">Стандартна</option>
+                            <option value="Експресна">Експресна</option>
+                        </select>
+                        <label for="service" class="input-group-text">Услуга</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <select id="payer" th:field="*{payer}" class="form-control">
+                            <option value="Избери">-Избери-</option>
+                            <option value="Подател">Подател</option>
+                            <option value="Получател">Получател</option>
+                        </select>
+                        <label for="payer" class="input-group-text">Платец</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <select id="content" th:field="*{content}" class="form-control">
+                            <option value="Избери">-Избери-</option>
+                            <option value="Авточасти">Авточасти</option>
+                            <option value="Документи">Документи</option>
+                            <option value="Канцеларски Материали">Канцеларски Материали</option>
+                            <option value="Мебели">Мебели</option>
+                            <option value="Техника">Техника</option>
+                            <option value="Лекарства">Лекарства</option>
+                        </select>
+                        <label for="content" class="input-group-text">Съдържание</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="number" id="value" th:field="*{value}" class="form-control" required>
+                        <label for="value" class="input-group-text">Стойност на стоката</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <select id="inspectionOption" th:field="*{inspectionOption}" class="form-control">
+                            <option value="Опции преди плащане">-Избери-</option>
+                            <option value="Отвори преди плащане">Отвори преди плащане</option>
+                            <option value="Тества преди плащане">Тества преди плащане</option>
+                        </select>
+                        <label for="inspectionOption" class="input-group-text">Опция преди плащане</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="checkbox" id="fragile" th:field="*{fragile}">
+                        <label for="fragile" class="input-group-text">Чупливост</label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="reset" class="btn btn-clear">Изчисти</button>
+                    <button type="submit" class="btn btn-save">Запази</button>
+                    <button type="button" class="btn btn-calculate">Изчисли</button>
+                    <button type="button" class="btn btn-complete">Приключи</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
