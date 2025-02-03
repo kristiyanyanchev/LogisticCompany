@@ -1,14 +1,18 @@
 package org.logistic.company.logisticcompany.persistance.models;
 
 import jakarta.persistence.*;
+
 import org.hibernate.annotations.Cascade;
+
 
 @Entity
 @Table(name = "authorities")
 @IdClass(Authority.class)
 public class Authority {
     @Id
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false,cascade = CascadeType.ALL)
+
     @JoinColumn(name = "username", nullable = false, referencedColumnName = "username")
     private User username;
 

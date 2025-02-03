@@ -14,6 +14,20 @@ public class User {
     @Column(name = "username", nullable = false, length = Integer.MAX_VALUE)
     private String username;
 
+    @Column(name = "enabled", nullable = false)
+    private boolean enabled = true;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Column(name = "password", nullable = false, length = Integer.MAX_VALUE)
+    private String password;
+
     @Column(name = "role", nullable = false, length = Integer.MAX_VALUE)
     private String role;
 

@@ -38,4 +38,14 @@ public class UserDTO {
     private String username = "";
     private String role = "";
     private String office = "";
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    private String password = "";
 }

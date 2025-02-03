@@ -6,6 +6,8 @@ import org.logistic.company.logisticcompany.persistance.service.PackageService;
 import org.logistic.company.logisticcompany.persistance.service.UserService;
 import org.logistic.company.logisticcompany.persistance.service.dto.PackageDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,7 @@ public class PackageController {
 
     @GetMapping
     public String index() {
+
         return "package/index";
     }
 
@@ -44,10 +47,42 @@ public class PackageController {
         model.addAttribute("packages", packageService.getPackagesSendBy(username));
         return "package/getPackagesTable";
     }
+    @GetMapping("/package/getPackagesSendBySearch")
+    public String getPackagesRegisteredBySenderSearch( Model model) {
+        return "package/getPackagesSendByClientSearch";
+    }
+
+    @GetMapping("package/getPackagesForCurrentUser")
+    public String getPackagesForCurrentUser(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        model.addAttribute("packages", packageService.getPackagesReceivedBy(currentPrincipalName));
+        return "package/getPackagesTable";
+    }
+
+
+
+    @GetMapping("/package/getPackagesReceivedBySearch")
+    public String getPackagesRegisteredReceivedBySearch( Model model) {
+        return "package/getPackagesReceivedByClientSearch";
+    }
+
+    @GetMapping("/package/getPackagesRegisteredBySearch")
+    public String getPackagesRegisteredBySearch( Model model) {
+        return "package/getPackagesRegisteredByEmployeeSearch";
+    }
+
 
     @GetMapping("/package/getPackagesReceivedBy")
     public String getPackagesReceivedBy( @RequestParam("username") String username, Model model) {
         model.addAttribute("packages", packageService.getPackagesReceivedBy(username));
+        return "package/getPackagesTable";
+    }
+    @GetMapping("/package/getPackagesRegisteredByМе")
+    public String getPackagesReceivedByMe( Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        model.addAttribute("packages", packageService.getPackagesRegisteredBy(currentPrincipalName));
         return "package/getPackagesTable";
     }
 
@@ -56,6 +91,18 @@ public class PackageController {
         model.addAttribute("packages", packageService.getPackagesReceivedOrSendBy(username));
         return "package/getPackagesTable";
     }
+
+    @GetMapping("/package/getPackagesSendButNotDelivered")
+    public String getPackagesSendButNotDelivered(Model model) {
+        model.addAttribute("packages", packageService.getSendButNotDeliveredPackages());
+        return "package/getPackagesTable";
+    }
+
+    @GetMapping("/package/incomeInput")
+    public String getPackagesReceivedBy(Model model) {
+        return "package/getIncomeForm";
+    }
+
 
     @GetMapping("/package/income")
     public String getPackagesReceivedBy(@RequestParam("startDate") LocalDate startDate, @RequestParam("endDate") LocalDate endDate, Model model) {

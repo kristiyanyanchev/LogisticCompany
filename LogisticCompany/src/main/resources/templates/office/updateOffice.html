@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -54,51 +54,35 @@
                     <a class="dropdown-item mobile-only" href="/package/getPackagesReceivedBySearch">Get Packages Received By Client</a>
                     <a class="dropdown-item mobile-only" href="/package/getPackagesRegisteredBySearch">Get Packages Registered by Employee</a>
                     <a class="dropdown-item mobile-only" href="/package/incomeInput">Get Company Income</a>
-
-
-
                 </div>
             </li>
         </ul>
     </div>
 </nav>
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">id</th>
-        <th scope="col">Source</th>
-        <th scope="col">Sender Address</th>
-        <th scope="col">Destination</th>
-        <th scope="col">Recipient Address</th>
-        <th scope="col">Sender</th>
-        <th scope="col">Recipient</th>
-        <th scope="col">Employee</th>
-        <th scope="col">SendAt</th>
-        <th scope="col">ReceivedAt</th>
-        <th scope="col">Status</th>
-        <th>Price</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="package: ${packages}" th:scope="row">
-        <td th:text="${package.getId()}"></td>
-        <td th:text="${package.getSource().getName()}"></td>
-        <td th:text="${package.getSenderAddress()}"></td>
-        <td th:text="${package.getDestination().getName()}"></td>
-        <td th:text="${package.getRecipientAddress()}"></td>
-        <td th:text="${package.getSender().getUsername()}"></td>
-        <td th:text="${package.getRecipient().getUsername()}"></td>
-        <td th:text="${package.getEmployee().getUsername()}"></td>
-        <td th:text="${package.getSendAt()}"></td>
-        <td th:text="${package.getReceivedAt()}"></td>
-        <td th:text="${package.getStatus()}"></td>
-        <td th:text="${package.getPrice()}"></td>
+<div class="container-sm col-3">
+    <form th:action="@{/office}" th:object="${dto}"  method="post" >
+        <input type="hidden" th:field="*{id}" th:value="${dto.id}">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Name</span>
+            <input type="text" class="form-control" aria-label="" id="name-text" th:value="${dto.getName()}" th:field="*{name}">
+        </div>
 
+        <div class="input-group mb-3">
+            <span class="input-group-text">City</span>
+            <input type="text" class="form-control" aria-label="" id="city-text" th:value="${dto.getCity()}" th:field="*{city}">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Address</span>
+            <input type="text" class="form-control" aria-label="" id="address-text" th:value="${dto.getAddress()}" th:field="*{address}">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Working Hours</span>
+            <input type="text" class="form-control" aria-label="" id="working-hours-text" th:value="${dto.getWorkingHours()}" th:field="*{workingHours}">
+        </div>
 
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 
-
-    </tr>
-    </tbody>
-</table>
 </body>
 </html>

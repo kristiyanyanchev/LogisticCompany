@@ -67,7 +67,6 @@ public class UserService {
             user.setPassword("{noop}"+userDTO.getPassword());
         }
 
-
         if(!auths.isEmpty()) {
             for (Authority auth : auths) {
                 auth.setUsername(user);
@@ -76,6 +75,7 @@ public class UserService {
 
         }
         //userRepository.save(user);
+        userRepository.save(user);
         Authority auth = new Authority(userDTO.getRole().equals("employee") ? "ROLE_ADMIN" : "ROLE_CLIENT", user);
         authoritiesRepository.save(auth);
     }
