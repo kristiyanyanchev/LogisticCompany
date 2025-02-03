@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}" href="../../static/css/register.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" href="../../static/css/login.css" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/reset.css}" href="../../static/css/typography.css" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/typography.css}" href="../../static/css/reset.css" />
 
     <script src="https://kit.fontawesome.com/6592283e01.js" crossorigin="anonymous"></script>
 
-    <title>Register</title>
+    <title>Login</title>
 </head>
 <body>
     <div class="form-wrapper">
         <div class="form-header">
             <div class="img-wrapper">
-                <img th:src="@{/images/logo.png}" src="../../static/images/logo.png" alt="logo" />
+                <img th:src="@{/images/logo.png}" alt="logo" />
             </div>
             <h3 class="company-name">Logistic Company</h3>
         </div>
-        <form class="form" th:action="@{/register}" th:object="${dto}" method="post">
-            <h2>Register</h2>
-            <input type="hidden" th:field="*{id}" th:value="${dto.id}" />
-            <input type="hidden" th:field="*{office}" th:value="null" />
-            <input type="hidden" th:field="*{role}" th:value="client" />
+        <form class="form" th:action="@{/login}" th:object="${dto}" method="post">
+            <h2>Login</h2>
 
             <div class="inputs">
                 <div class="input-wrapper">
@@ -32,7 +29,7 @@
                     <label for="username-text" class="input-group-text">Username</label>
                     <div class="invalid-feedback">
                         <i class="fa-solid fa-circle-info"></i> 
-                        <span class="buble-error"></span> 
+                        <span class="bubble-error"></span> 
                     </div>
                 </div>
     
@@ -44,22 +41,14 @@
                         <span class="bubble-error"></span> 
                     </div>
                 </div>
-                <div class="input-wrapper">
-                    <input type="password" class="form-control" id="inputPasswordConfirm" th:field="*{password}" required />
-                    <label for="inputPassword1" class="form-label">Password</label>
-                    <div class="invalid-feedback">
-                        <i class="fa-solid fa-circle-info"></i> 
-                        <span class="bubble-error"></span> 
-                    </div>
-                </div>
             </div>
 
             <button type="submit" class="btn btn-submit">Submit</button>
+            <div class="form-footer">
+                <p>Don't have an account? <a th:href="@{/register}" >Register</a></p>
+            </div>
         </form>
-        <div class="form-footer">
-            <p>Already have an account? <a th:href="@{/login}" href="login" >Login</a></p>
-        </div>
     </div>
-    <script th:src="@{/js/inputValidation.js}" src="../../static/js/inputValidation.js"></script>
+    <script th:src="@{/js/inputValidation.js}"></script>
 </body>
 </html>

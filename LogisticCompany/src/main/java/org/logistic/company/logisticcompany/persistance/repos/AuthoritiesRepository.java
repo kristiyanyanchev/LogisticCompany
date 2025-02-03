@@ -1,6 +1,5 @@
 package org.logistic.company.logisticcompany.persistance.repos;
 import org.logistic.company.logisticcompany.persistance.models.Authority;
-import org.logistic.company.logisticcompany.persistance.models.Office;
 import org.logistic.company.logisticcompany.persistance.models.User;
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;

@@ -2,7 +2,6 @@ package org.logistic.company.logisticcompany.controller;
 
 import org.logistic.company.logisticcompany.persistance.service.OfficeService;
 import org.logistic.company.logisticcompany.persistance.service.dto.OfficeDTO;
-import org.logistic.company.logisticcompany.persistance.service.dto.PackageDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +18,7 @@ public class OfficeController {
 
     @GetMapping("/office")
     public String getAllOffices(Model model) {
-        model.addAttribute("offices",officeService.getOffices());
+        model.addAttribute("offices", officeService.getOffices());
         return "office/getAll";
     }
 

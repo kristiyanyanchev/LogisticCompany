@@ -11,7 +11,7 @@ public class User {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "username", nullable = false, length = Integer.MAX_VALUE)
+    @Column(name = "username", nullable = false, unique = true, length = Integer.MAX_VALUE)
     private String username;
 
     @Column(name = "enabled", nullable = false)

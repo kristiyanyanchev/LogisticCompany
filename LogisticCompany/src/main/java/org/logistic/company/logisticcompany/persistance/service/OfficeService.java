@@ -1,7 +1,6 @@
 package org.logistic.company.logisticcompany.persistance.service;
 
 import org.logistic.company.logisticcompany.persistance.models.Office;
-import org.logistic.company.logisticcompany.persistance.models.User;
 import org.logistic.company.logisticcompany.persistance.repos.OfficeRepository;
 import org.logistic.company.logisticcompany.persistance.service.dto.OfficeDTO;
 import org.springframework.stereotype.Service;

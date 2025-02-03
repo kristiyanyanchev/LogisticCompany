@@ -1,6 +1,5 @@
 package org.logistic.company.logisticcompany.controller;
 
-import org.logistic.company.logisticcompany.persistance.models.Package;
 import org.logistic.company.logisticcompany.persistance.service.OfficeService;
 import org.logistic.company.logisticcompany.persistance.service.PackageService;
 import org.logistic.company.logisticcompany.persistance.service.UserService;
@@ -24,11 +23,11 @@ public class PackageController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public String index() {
+    // @GetMapping
+    // public String index() {
 
-        return "package/index";
-    }
+    //     return "package/index";
+    // }
 
     @GetMapping("/package/getAll")
     public String getAll(Model model) {
@@ -42,11 +41,13 @@ public class PackageController {
         return "package/getPackagesTable";
     }
 
-    @GetMapping("/package/getPackagesSendBy")
-    public String getPackagesRegisteredBySender( @RequestParam("username") String username, Model model) {
+    @GetMapping("/package/getPackages/{userId}")
+    public String getPackagesByUserId(@PathVariable("userId") Long userId, Model model) {
+        String username = userService.getUserDTOById(userId).getUsername(); // Assuming you have a method to get the username by userId
         model.addAttribute("packages", packageService.getPackagesSendBy(username));
-        return "package/getPackagesTable";
+        return "package/getAll";
     }
+
     @GetMapping("/package/getPackagesSendBySearch")
     public String getPackagesRegisteredBySenderSearch( Model model) {
         return "package/getPackagesSendByClientSearch";
@@ -128,7 +129,6 @@ public class PackageController {
     }
     @GetMapping("/package/create")
     public String createPackages(Model model) {
-        Package pkg = new Package();
 
         model.addAttribute("package", null);
         model.addAttribute("offices",officeService.getOffices());

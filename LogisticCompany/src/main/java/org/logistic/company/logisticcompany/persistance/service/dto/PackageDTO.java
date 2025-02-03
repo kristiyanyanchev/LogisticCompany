@@ -1,16 +1,15 @@
 package org.logistic.company.logisticcompany.persistance.service.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 public class PackageDTO {
     private Long id;
-   private String source = "";
-   private String destination = "";
-   private String sender = "";
-   private String recipient = "";
-   private String employee = "";
-   private String senderAddress = "";
+    private String source = "";
+    private String destination = "";
+    private String sender = "";
+    private String recipient = "";
+    private String employee = "";
+    private String senderAddress = "";
 
     public String getRecipientAddress() {
         return recipientAddress;
@@ -29,6 +28,7 @@ public class PackageDTO {
     }
 
     private String recipientAddress = "";
+
     public Long getId() {
         return id;
     }
@@ -36,6 +36,7 @@ public class PackageDTO {
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getSendAt() {
         return sendAt;
     }
@@ -110,9 +111,8 @@ public class PackageDTO {
     }
 
     private String sendAt = "";
-   private String receivedAt = "";
-   private BigDecimal price = BigDecimal.ZERO;
-   private String status =  "";
-
+    private String receivedAt = "";
+    private BigDecimal price = BigDecimal.ZERO;
+    private String status = "";
 
 }
