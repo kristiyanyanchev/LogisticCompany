@@ -12,13 +12,14 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
 
-
 @Configuration
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/", "/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers("/profile").authenticated()
                         .requestMatchers("/register").permitAll()
                         .requestMatchers("/package/getPackagesForCurrentUser").hasRole("USER")
                         .requestMatchers("/package/**").hasRole("ADMIN")
@@ -26,13 +27,15 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
 
                 )
-
-                .formLogin(Customizer.withDefaults())
-                .logout(Customizer.withDefaults());
+                .formLogin(form -> form
+                        .loginPage("/login")
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login")
+                );
         return http.build();
     }
-
-
 
     @Bean
     public UserDetailsService userDetailsService(DataSource dataSource) {
@@ -44,6 +47,5 @@ public class SecurityConfig {
 
         return new JdbcUserDetailsManager(dataSource);
     }
-
 
 }
