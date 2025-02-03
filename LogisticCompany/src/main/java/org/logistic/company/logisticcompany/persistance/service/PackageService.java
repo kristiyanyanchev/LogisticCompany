@@ -77,9 +77,15 @@ public class PackageService {
         else{
             pkg = getPackageById(dto.getId());
         }
+        if(!dto.getDestination().isEmpty()) {
+            pkg.setDestination(officeService.getOffice(dto.getDestination()));
+        }
 
-        pkg.setDestination(officeService.getOffice(dto.getDestination()));
-        pkg.setSource(officeService.getOffice(dto.getSource()));
+        if(!dto.getSource().isEmpty()) {
+            pkg.setSource(officeService.getOffice(dto.getSource()));
+        }
+
+
         pkg.setPrice(dto.getPrice());
         pkg.setStatus(dto.getStatus());
         pkg.setEmployee(userService.findByUsername(dto.getEmployee()));
@@ -101,8 +107,13 @@ public class PackageService {
         Package pkg = getPackageById(id);
         PackageDTO dto = new PackageDTO();
         dto.setId(id);
-        dto.setDestination(pkg.getDestination().getName());
-        dto.setSource(pkg.getSource().getName());
+        if(pkg.getDestination() != null) {
+            dto.setDestination(pkg.getDestination().getName());
+        }
+        if(pkg.getSource() != null) {
+            dto.setSource(pkg.getSource().getName());
+        }
+
         dto.setPrice(pkg.getPrice());
         dto.setStatus(pkg.getStatus());
         dto.setSender(pkg.getSender().getUsername());
