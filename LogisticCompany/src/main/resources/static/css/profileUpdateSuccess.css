@@ -9,7 +9,7 @@
 
 .form-wrapper {
     background-color: #fff;
-    padding: 4rem;
+    padding: 4resta;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 140%;
@@ -85,7 +85,7 @@
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: 1rem;
+    margin-top: 6rem;
     margin-right: 0.5rem;
 }
 
