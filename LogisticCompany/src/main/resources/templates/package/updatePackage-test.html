@@ -11,28 +11,8 @@
     <title>Редактиране на Пратка</title>
 </head>
 <body>
-    <header class="site-header">
-        <nav class="navbar">
-            <div class="logo-wrapper">
-                <a href="updatePackage.html" class="logo"><img src="../../static/images/logo.png" alt=""></a>
-                <h2>Logistic Company</h2>
-            </div>
-            <div class="menu-items-wrapper">
-                <ul class="menu-items">
-                    <li><a href="../home/index.html">Начало</a></li>
-                    <li><a href="index.html">Услуги</a></li>
-                    <li><a href="index.html">Офиси и автомати</a></li>
-                    <li><a href="index.html">За нас</a></li>
-                </ul>
-            </div>
-            <div class="auth-items-wrapper">
-                <ul class="auth-items">
-                    <li><a href="../user/login.html">Вход</a></li>
-                    <li><a href="../user/register.html">Регистрация</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    
+    <header class="site-header" th:replace="~{fragments/header :: header}"></header>
 
     <main class="main">
         <div class="form-wrapper">
@@ -46,27 +26,27 @@
                 <h3>Информация за Подател</h3>
                 <div class="inputs">
                     <div class="input-wrapper">
-                        <input type="text" id="senderName" th:field="*{senderName}" class="form-control" required disabled>
+                        <input type="text" id="senderName" th:field="*{senderName}" class="form-control" required >
                         <label for="senderName" class="input-group-text">Име</label>
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" id="senderAddress" th:field="*{senderAddress}" class="form-control" required disabled>
+                        <input type="text" id="senderAddress" th:field="*{senderAddress}" class="form-control" required >
                         <label for="senderAddress" class="input-group-text">Адрес</label>
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" id="senderPhone" th:field="*{senderPhone}" class="form-control" required disabled>
+                        <input type="text" id="senderPhone" th:field="*{senderPhone}" class="form-control" required >
                         <label for="senderPhone" class="input-group-text">Телефон</label>
                     </div>
                     <div class="input-wrapper">
-                        <input type="email" id="senderEmail" th:field="*{senderEmail}" class="form-control" required disabled>
+                        <input type="email" id="senderEmail" th:field="*{senderEmail}" class="form-control" required >
                         <label for="senderEmail" class="input-group-text">Имейл</label>
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" id="senderCity" th:field="*{senderCity}" class="form-control" required disabled>
+                        <input type="text" id="senderCity" th:field="*{senderCity}" class="form-control" required >
                         <label for="senderCity" class="input-group-text">Населено място</label>
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" id="senderPostalCode" th:field="*{senderPostalCode}" class="form-control" required disabled>
+                        <input type="text" id="senderPostalCode" th:field="*{senderPostalCode}" class="form-control" required >
                         <label for="senderPostalCode" class="input-group-text">Пощенски код</label>
                     </div>
                     <div class="input-wrapper">
@@ -168,6 +148,8 @@
             </form>
         </div>
     </main>
+
+    <footer class="site-footer" th:replace="~{fragments/footer :: footer}"></footer>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -41,11 +41,13 @@ public class PackageController {
         return "package/getPackagesTable";
     }
 
-    @GetMapping("/package/getPackagesSendBy")
-    public String getPackagesRegisteredBySender( @RequestParam("username") String username, Model model) {
+    @GetMapping("/package/getPackages/{userId}")
+    public String getPackagesByUserId(@PathVariable("userId") Long userId, Model model) {
+        String username = userService.getUserDTOById(userId).getUsername(); // Assuming you have a method to get the username by userId
         model.addAttribute("packages", packageService.getPackagesSendBy(username));
-        return "package/getPackagesTable";
+        return "package/getAll";
     }
+
     @GetMapping("/package/getPackagesSendBySearch")
     public String getPackagesRegisteredBySenderSearch( Model model) {
         return "package/getPackagesSendByClientSearch";
