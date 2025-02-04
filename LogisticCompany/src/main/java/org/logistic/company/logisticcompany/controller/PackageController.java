@@ -41,6 +41,12 @@ public class PackageController {
         return "package/getPackagesTable";
     }
 
+    @GetMapping("/package/getPackages")
+    public String getPackages( Model model) {
+        model.addAttribute("packages", packageService.getPackages());
+        return "package/getAll";
+    }
+
     @GetMapping("/package/getPackages/{userId}")
     public String getPackagesByUserId(@PathVariable("userId") Long userId, Model model) {
         String username = userService.getUserDTOById(userId).getUsername(); // Assuming you have a method to get the username by userId
