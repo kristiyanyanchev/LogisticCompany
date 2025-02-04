@@ -21,7 +21,7 @@
                 <ul class="menu-items">
                     <li><a href="../home/index.html">Начало</a></li>
                     <li><a href="index.html">Услуги</a></li>
-                    <li><a href="index.html">Офиси и автомати</а></li>
+                    <li><a href="index.html">Офиси и автомати</a></li>
                     <li><a href="index.html">За нас</a></li>
                 </ul>
             </div>
@@ -42,17 +42,16 @@
                 </div>
                 <h2>Настройки на профила</h2>
             </div>
-                <div class=""
             <form class="form" th:action="@{/updateProfile}" method="post">
-                
+                <h3 class="section-header">Лична информация</h3>
                 <div class="inputs">
                     <div class="input-wrapper">
-                        <input type="text" id="firstName" class="form-control" placeholder="Име" required>
-                        <label for="firstName" class="input-group-text">Име</label>
+                        <input type="text" id="username" class="form-control" placeholder="Потребителско име" required>
+                        <label for="username" class="input-group-text">Потребителско име</label>
                     </div>
                     <div class="input-wrapper">
-                        <input type="text" id="surname" class="form-control" placeholder="Фамилия" required>
-                        <label for="surname" class="input-group-text">Фамилия</label>
+                        <input type="password" id="password" class="form-control" placeholder="Парола" required>
+                        <label for="password" class="input-group-text">Парола</label>
                     </div>
                     <div class="input-wrapper">
                         <input type="text" id="mobileNumber" class="form-control" placeholder="Мобилен номер" required>
@@ -62,35 +61,19 @@
                         <input type="email" id="email" class="form-control" placeholder="Имейл" required>
                         <label for="email" class="input-group-text">Имейл</label>
                     </div>
+
                     <div class="input-wrapper">
-                        <input type="text" id="addressLine1" class="form-control" placeholder="Адрес" required>
-                        <label for="addressLine1" class="input-group-text">Адрес</label>
-                    </div>
-                    <div class="input-wrapper">
-                        <input type="text" id="country" class="form-control" placeholder="Държава" required>
-                        <label for="country" class="input-group-text">Държава</label>
-                    </div>
-                    <div class="input-wrapper">
-                        <input type="text" id="stateRegion" class="form-control" placeholder="Област" required>
-                        <label for="stateRegion" class="input-group-text">Област</label>
-                    </div>
-                    <div class="input-wrapper">
-                        <input type="text" id="area" class="form-control" placeholder="Община">
-                        <label for="area" class="input-group-text">Община</label>
-                    </div>
-                    <div class="input-wrapper">
-                        <input type="text" id="state" class="form-control" placeholder="Град/Село" required>
-                        <label for="state" class="input-group-text">Град/Село</label>
-                    </div>
-                    <div class="input-wrapper">
-                        <input type="text" id="postcode" class="form-control" placeholder="Пощенски код" required>
-                        <label for="postcode" class="input-group-text">Пощенски код</label>
+                        <input type="checkbox" id="enabled" class="form-control" checked>
+                        <label for="enabled" class="input-group-text">Активен</label>
                     </div>
                 </div>
 
                 <div class="form-actions">
                     <button type="reset" class="btn btn-clear">Изчисти</button>
-                    <button type="submit" class="btn btn-save">Запази промените</button>
+                    <form th:action="@{/package}" th:object="${dto}"  method="post" >
+                        <a href = "../package/profileUpdateSuccess.html " class="btn btn-save">Запази промените</a>
+                    </form>
+                    
                 </div>
             </form>
         </div>
