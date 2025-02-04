@@ -24,7 +24,7 @@
 
 <div class="container-sm col-3">
         <form th:action="@{/package}" th:object="${dto}"  method="post" >
-            <input type="hidden" th:field="*{id}" th:value="${dto.id}"> <
+            <input type="hidden" th:field="*{id}" th:value="${dto.id}">
             <div class="mb-3">
                 <label for="sourceDatalist" class="form-label">Source</label>
                 <input class="form-control" list="sourceDatalistOptions"

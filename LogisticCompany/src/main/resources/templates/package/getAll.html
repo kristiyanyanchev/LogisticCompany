@@ -1,45 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <header class="site-header" th:replace="~{fragments/header :: header}"></header>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">Source</th>
-                <th scope="col">Sender Address</th>
-                <th scope="col">Destination</th>
-                <th scope="col">Recipient Address</th>
-                <th scope="col">Sender</th>
-                <th scope="col">Recipient</th>
-                <th scope="col">Employee</th>
-                <th scope="col">SendAt</th>
-                <th scope="col">ReceivedAt</th>
-                <th scope="col">Status</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="package: ${packages}" th:scope="row">
-                <td th:text="${package.getId()}"></td>
-                <td th:text="${package.getSource().getName()}"></td>
-                <td th:text="${package.getSenderAddress()}"></td>
-                <td th:text="${package.getDestination().getName()}"></td>
-                <td th:text="${package.getRecipientAddress()}"></td>
-                <td th:text="${package.getSender().getUsername()}"></td>
-                <td th:text="${package.getRecipient().getUsername()}"></td>
-                <td th:text="${package.getEmployee().getUsername()}"></td>
-                <td th:text="${package.getSendAt()}"></td>
-                <td th:text="${package.getReceivedAt()}"></td>
-                <td th:text="${package.getStatus()}"></td>
-                <td th:text="${package.getPrice()}"></td>
 
-            </tr>
-        </tbody>
-    </table>
+    <link rel="stylesheet" th:href="@{/css/reset.css}" href="../../static/css/reset.css">
+    <link rel="stylesheet" th:href="@{/css/typography.css}" href="../../static/css/typography.css">
+    <link rel="stylesheet" th:href="@{/css/footer.css}" href="../../static/css/footer.css">
+    <link rel="stylesheet" th:href="@{/css/nav.css}" href="../../static/css/nav.css">
+    <link rel="stylesheet" th:href="@{/css/all-packages.css}" href="../../static/css/all-packages.css">
+
+    <title>Моите пратки</title>
+</head>
+
+<body>
+    <div class="site">
+        <header class="site-header" th:replace="~{fragments/header :: header}"></header>
+
+        <main>
+            <div class="container">
+                <h2>Моите пратки</h2>
+                <ul class="responsive-table">
+                    <li class="table-header">
+                        <div class="col col-1">Товарителница</div>
+                        <div class="col col-2">Подател</div>
+                        <div class="col col-3">Получател</div>
+                        <div class="col col-4">Изпратена на</div>
+                        <div class="col col-5">Статус</div>
+                        <div class="col col-6">Действия</div>
+                    </li>
+                    <li class="table-row" th:each="package: ${packages}" th:scope="row">
+                        <div class="col col-1" data-label="Товарителница" th:text="${package.getId()}"></div>
+                        <div class="col col-2" data-label="Подател" th:text="${package.getSender().getUsername()}">
+                        </div>
+                        <div class="col col-3" data-label="Получател" th:text="${package.getRecipient().getUsername()}">
+                        </div>
+                        <div class="col col-4" data-label="Изпратена на" th:text="${package.getSendAt()}"></div>
+                        <div class="col col-5" data-label="Статус" th:text="${package.getStatus()}"></div>
+                        <div class="col col-6" data-label="Действия">
+                            <a th:href="@{'/package/details/' + ${package.getId()}}">Детайли</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </main>
+
+        <footer class="site-footer" th:replace="~{fragments/footer :: footer}"></footer>
+    </div>
 </body>
+
 </html>

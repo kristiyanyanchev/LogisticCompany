@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/footer.css}" href="../../static/css/footer.css">
+    <link rel="stylesheet" th:href="@{/css/nav.css}" href="../../static/css/nav.css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}" href="../../static/css/register.css" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/reset.css}" href="../../static/css/typography.css" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/typography.css}" href="../../static/css/reset.css" />
@@ -11,7 +14,9 @@
 
     <title>Register</title>
 </head>
+
 <body>
+    <header class="site-header" th:replace="~{fragments/header :: header}"></header>
     <div class="form-wrapper">
         <div class="form-header">
             <div class="img-wrapper">
@@ -27,39 +32,68 @@
 
             <div class="inputs">
                 <div class="input-wrapper">
-                    <input type="text" class="form-control" aria-label="" id="username-text" th:value="${dto.getUsername()}"
-                    th:field="*{username}" required />
-                    <label for="username-text" class="input-group-text">Username</label>
+                    <input type="text" class="form-control" aria-label="" id="username-text"
+                        th:value="${dto.getUsername()}" th:field="*{username}" required />
+                    <label for="username-text" class="input-group-text">Потребителско име</label>
                     <div class="invalid-feedback">
-                        <i class="fa-solid fa-circle-info"></i> 
-                        <span class="buble-error"></span> 
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="buble-error"></span>
                     </div>
                 </div>
-    
+                <div class="input-wrapper">
+                    <input type="text" class="form-control" aria-label="" id="emailText" th:value="${dto.getEmail()}"
+                        th:field="*{email}" required />
+                    <label for="emailText" class="input-group-text">Имейл</label>
+                    <div class="invalid-feedback">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="bubble-error"></span>
+                    </div>
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" class="form-control" aria-label="" id="phoneNumberText" th:value="${dto.getPhoneNumber()}"
+                        th:field="*{phoneNumber}" required />
+                    <label for="phoneNumberText" class="input-group-text">Тел. номер</label>
+                    <div class="invalid-feedback">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="bubble-error"></span>
+                    </div>
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" class="form-control" aria-label="" id="firstNameText"
+                        th:value="${dto.getFirstName()}" th:field="*{firstName}" required />
+                    <label for="firstNameText" class="input-group-text">Име</label>
+                    <div class="invalid-feedback">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="buble-error"></span>
+                    </div>
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" class="form-control" aria-label="" id="lastNameText"
+                        th:value="${dto.getLastName()}" th:field="*{lastName}" required />
+                    <label for="lastNameText" class="input-group-text">Фамилия</label>
+                    <div class="invalid-feedback">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="buble-error"></span>
+                    </div>
+                </div>
                 <div class="input-wrapper">
                     <input type="password" class="form-control" id="inputPassword1" th:field="*{password}" required />
-                    <label for="inputPassword1" class="form-label">Password</label>
+                    <label for="inputPassword1" class="form-label">Парола</label>
                     <div class="invalid-feedback">
-                        <i class="fa-solid fa-circle-info"></i> 
-                        <span class="bubble-error"></span> 
-                    </div>
-                </div>
-                <div class="input-wrapper">
-                    <input type="password" class="form-control" id="inputPasswordConfirm" th:field="*{password}" required />
-                    <label for="inputPassword1" class="form-label">Password</label>
-                    <div class="invalid-feedback">
-                        <i class="fa-solid fa-circle-info"></i> 
-                        <span class="bubble-error"></span> 
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="bubble-error"></span>
                     </div>
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-submit">Submit</button>
+            <button type="submit" class="btn btn-submit">Регистрация</button>
         </form>
         <div class="form-footer">
-            <p>Already have an account? <a th:href="@{/login}" href="login" >Login</a></p>
+            <p>Вече имате акаунт? <a th:href="@{/login}" href="login">Вход</a></p>
         </div>
     </div>
+    <footer class="site-footer" th:replace="~{fragments/footer :: footer}"></footer>
     <script th:src="@{/js/inputValidation.js}" src="../../static/js/inputValidation.js"></script>
 </body>
+
 </html>
