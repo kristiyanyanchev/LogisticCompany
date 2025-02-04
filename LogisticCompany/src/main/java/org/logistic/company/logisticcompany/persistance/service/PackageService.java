@@ -1,12 +1,15 @@
 package org.logistic.company.logisticcompany.persistance.service;
 
 import org.logistic.company.logisticcompany.persistance.models.Package;
+import org.logistic.company.logisticcompany.persistance.models.User;
 import org.logistic.company.logisticcompany.persistance.repos.PackageRepostiory;
 import org.logistic.company.logisticcompany.persistance.service.dto.PackageDTO;
+import org.logistic.company.logisticcompany.persistance.service.dto.UserDTO;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
@@ -85,20 +88,61 @@ public class PackageService {
             pkg.setSource(officeService.getOffice(dto.getSource()));
         }
 
+        User sender = userService.findByEmail(dto.getSenderEmail());
+
+        if(sender == null){
+            UserDTO userDTO = new UserDTO();
+
+            userDTO.setEmail(dto.getSenderEmail());
+            userDTO.setFirstName(dto.getSenderName());
+            userDTO.setLastName("aaaa");
+            userDTO.setPhoneNumber(dto.getSenderPhone());
+            userDTO.setUsername(dto.getSenderEmail());
+            userDTO.setRole("client");
+            userDTO.setPassword("password");
+
+            userService.updateUser(userDTO);
+        }
+
+        User recipient = userService.findByEmail(dto.getRecipientEmail());
+        User employee = userService.findByUsername(dto.getEmployee());
+
+        if(recipient == null){
+            UserDTO userDTO = new UserDTO();
+
+            userDTO.setEmail(dto.getRecipientEmail());
+            userDTO.setFirstName(dto.getRecipientName());
+            userDTO.setLastName("aaaa");
+            userDTO.setPhoneNumber(dto.getRecipientPhone());
+            userDTO.setUsername(dto.getRecipientEmail());
+            userDTO.setRole("client");
+            userDTO.setPassword("password");
+
+            userService.updateUser(userDTO);
+        }
+
+        recipient = userService.findByEmail(dto.getRecipientEmail());
 
         pkg.setPrice(dto.getPrice());
         pkg.setStatus(dto.getStatus());
         pkg.setEmployee(userService.findByUsername(dto.getEmployee()));
-        pkg.setRecipient(userService.findByUsername(dto.getRecipient()));
-        pkg.setSender(userService.findByUsername(dto.getSender()));
         pkg.setSenderAddress(dto.getSenderAddress());
         pkg.setRecipientAddress(dto.getRecipientAddress());
+        pkg.setSenderNote(dto.getSenderNote());
+        pkg.setSender(sender);
+        pkg.setRecipient(recipient);
+        pkg.setEmployee(employee);
+        pkg.setStatus("In Transit");
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         formatter = formatter.withLocale(Locale.US );
 
-        pkg.setReceivedAt(LocalDate.parse(dto.getReceivedAt(), formatter));
-        pkg.setSendAt(LocalDate.parse(dto.getSendAt(), formatter));
+        String dateSent = LocalDate.now().toString();
+
+        dto.setSentAt(LocalDate.now().toString());
+
+        pkg.setReceivedAt(null);
+        pkg.setSendAt(LocalDate.parse(dateSent, formatter));
         return pkg;
 
     }
@@ -119,7 +163,7 @@ public class PackageService {
         dto.setSender(pkg.getSender().getUsername());
         dto.setEmployee(pkg.getEmployee().getUsername());
         dto.setRecipient(pkg.getRecipient().getUsername());
-        dto.setSendAt(pkg.getSendAt().toString());
+        dto.setSentAt(pkg.getSendAt().toString());
         dto.setReceivedAt(pkg.getReceivedAt().toString());
         dto.setSenderAddress(pkg.getSenderAddress());
         dto.setRecipientAddress(pkg.getRecipientAddress());

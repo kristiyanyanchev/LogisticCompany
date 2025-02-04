@@ -3,7 +3,6 @@ package org.logistic.company.logisticcompany.persistance.service;
 import org.logistic.company.logisticcompany.persistance.models.Authority;
 import org.logistic.company.logisticcompany.persistance.models.User;
 import org.logistic.company.logisticcompany.persistance.repos.AuthoritiesRepository;
-import org.logistic.company.logisticcompany.persistance.repos.AuthorityPK;
 import org.logistic.company.logisticcompany.persistance.repos.UserRepository;
 import org.logistic.company.logisticcompany.persistance.service.dto.UserDTO;
 import org.springframework.stereotype.Service;
@@ -30,6 +29,10 @@ public class UserService {
 
     public User findByUsername(String username) {
         return userRepository.findByUsername(username).stream()
+                .findFirst().orElse(null);
+    }
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email).stream()
                 .findFirst().orElse(null);
     }
     public List<User> findAllEmployees() {

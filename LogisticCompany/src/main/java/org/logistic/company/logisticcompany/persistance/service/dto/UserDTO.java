@@ -9,6 +9,7 @@ public class UserDTO {
     private String lastName = "";
     private String password = "";
 
+    //! FOREIGN KEYS
     private String role = "";
     private String office = "";
 
