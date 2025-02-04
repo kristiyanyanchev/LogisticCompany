@@ -24,9 +24,11 @@
                     <li th:if="${#authorization.expression('isAuthenticated()')}">
                         <a th:href="|@{/package/getPackages/{userId}(userId=${user.id})}|">Преглед на пратки</a>
                     </li>
+                    <li sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{/package/create}">Добавяне на пратка</a>
+                    </li>
                     <li><a th:href="@{/office}">Офиси и автомати</a></li>
-                    <li><a href="../home/index.html">За нас</a></li>
-                    <li class="dropdown">
+                    <li sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
                         <button class="dropdown-button">Още <span>&#9662;</span></button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item mobile-only" href="/users/employees">Get All Employees</a></li>
