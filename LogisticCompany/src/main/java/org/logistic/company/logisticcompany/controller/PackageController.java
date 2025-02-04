@@ -61,8 +61,6 @@ public class PackageController {
         return "package/getPackagesTable";
     }
 
-
-
     @GetMapping("/package/getPackagesReceivedBySearch")
     public String getPackagesRegisteredReceivedBySearch( Model model) {
         return "package/getPackagesReceivedByClientSearch";
@@ -72,7 +70,6 @@ public class PackageController {
     public String getPackagesRegisteredBySearch( Model model) {
         return "package/getPackagesRegisteredByEmployeeSearch";
     }
-
 
     @GetMapping("/package/getPackagesReceivedBy")
     public String getPackagesReceivedBy( @RequestParam("username") String username, Model model) {
@@ -129,7 +126,6 @@ public class PackageController {
     }
     @GetMapping("/package/create")
     public String createPackages(Model model) {
-
         model.addAttribute("package", null);
         model.addAttribute("offices",officeService.getOffices());
         model.addAttribute("employees", userService.findAllEmployees());

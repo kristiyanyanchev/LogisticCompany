@@ -1,15 +1,107 @@
 package org.logistic.company.logisticcompany.persistance.service.dto;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class PackageDTO {
     private Long id;
-    private String source = "";
-    private String destination = "";
+
+    //Both are office properties
+    private String sentFrom = "";
+    private String sentTo = "";
+
     private String sender = "";
     private String recipient = "";
-    private String employee = "";
+
+    private String senderName = "";
+    private String senderPhone = "";
+    private String senderEmail = "";
+    private String senderNote = "";
     private String senderAddress = "";
+
+    private String recipientName = "";
+    private String recipientPhone = "";
+    private String recipientEmail = "";
+    private String recipientAddress = "";
+
+    private String employee = "";
+
+    private String sentAt = LocalDateTime.now().toString();
+    private String receivedAt = "";
+    private BigDecimal price = BigDecimal.ZERO;
+    private String status = "";
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
+    }
+
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
+
+    public String getSenderPhone() {
+        return senderPhone;
+    }
+
+    public void setSenderPhone(String senderPhone) {
+        this.senderPhone = senderPhone;
+    }
+
+    public String getSenderEmail() {
+        return senderEmail;
+    }
+
+    public void setSenderEmail(String senderEmail) {
+        this.senderEmail = senderEmail;
+    }
+
+    public String getSenderNote() {
+        return senderNote;
+    }
+
+    public void setSenderNote(String senderNote) {
+        this.senderNote = senderNote;
+    }
+
+    public String getRecipientName() {
+        return recipientName;
+    }
+
+    public void setRecipientName(String recipientName) {
+        this.recipientName = recipientName;
+    }
+
+    public String getRecipientPhone() {
+        return recipientPhone;
+    }
+
+    public void setRecipientPhone(String recipientPhone) {
+        this.recipientPhone = recipientPhone;
+    }
+
+    public String getRecipientEmail() {
+        return recipientEmail;
+    }
+
+    public void setRecipientEmail(String recipientEmail) {
+        this.recipientEmail = recipientEmail;
+    }
 
     public String getRecipientAddress() {
         return recipientAddress;
@@ -27,7 +119,6 @@ public class PackageDTO {
         this.senderAddress = senderAddress;
     }
 
-    private String recipientAddress = "";
 
     public Long getId() {
         return id;
@@ -37,44 +128,28 @@ public class PackageDTO {
         this.id = id;
     }
 
-    public String getSendAt() {
-        return sendAt;
+    public String getSentAt() {
+        return sentAt;
     }
 
-    public void setSendAt(String sendAt) {
-        this.sendAt = sendAt;
+    public void setSentAt(String sendAt) {
+        this.sentAt = sendAt;
     }
 
     public String getSource() {
-        return source;
+        return sentFrom;
     }
 
-    public void setSource(String source) {
-        this.source = source;
+    public void setSource(String sentFrom) {
+        this.sentFrom = sentFrom;
     }
 
     public String getDestination() {
-        return destination;
+        return sentTo;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
-
-    public String getSender() {
-        return sender;
-    }
-
-    public void setSender(String sender) {
-        this.sender = sender;
-    }
-
-    public String getRecipient() {
-        return recipient;
-    }
-
-    public void setRecipient(String recipient) {
-        this.recipient = recipient;
+    public void setDestination(String sentTo) {
+        this.sentTo = sentTo;
     }
 
     public String getEmployee() {
@@ -109,10 +184,4 @@ public class PackageDTO {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    private String sendAt = "";
-    private String receivedAt = "";
-    private BigDecimal price = BigDecimal.ZERO;
-    private String status = "";
-
 }

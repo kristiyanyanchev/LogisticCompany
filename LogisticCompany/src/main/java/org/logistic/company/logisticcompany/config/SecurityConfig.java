@@ -18,8 +18,8 @@ public class SecurityConfig {
                 http
                         .authorizeHttpRequests(auth -> auth
                                 .requestMatchers("/profile").authenticated()
-                                .requestMatchers("/package/**").hasRole("CLIENT")
-                                .requestMatchers("/user/**").hasAnyRole("CLIENT", "ADMIN")
+                                .requestMatchers("/package/**").hasAnyRole("CLIENT","ADMIN")
+                                .requestMatchers("/users/**").hasAnyRole("CLIENT", "ADMIN")
                                 .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                                 .requestMatchers("/home/**").permitAll()
                                 .requestMatchers("/").permitAll()
@@ -47,7 +47,7 @@ public class SecurityConfig {
                 UserDetails userDetails = User.builder()
                                 .username("user")
                                 .password("{noop}password")
-                                .roles("USER")
+                                .roles("CLIENT")
                                 .build();
 
                 return new JdbcUserDetailsManager(dataSource);

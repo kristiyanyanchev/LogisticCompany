@@ -13,6 +13,39 @@ public class Package {
     @Column(name = "id", nullable = false)
     private int id;
 
+    @ManyToOne
+    @JoinColumn(name = "destination_id")
+    private Office destination;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private User employee;
+
+    @ManyToOne
+    @JoinColumn(name = "sender_id")
+    private User sender;
+
+    @ManyToOne
+
+    @JoinColumn(name = "recipient_id")
+    private User recipient;
+
+    @Column(name = "price", nullable = false)
+    private BigDecimal price;
+    @Column(name = "status", nullable = false)
+    private String status;
+    @Column(name = "send_at", nullable = false)
+    private LocalDate sendAt;
+    @Column(name = "received_at", nullable = true)
+    private LocalDate receivedAt;
+
+    @Column(name = "sender_address")
+    private String SenderAddress;
+    @Column(name = "recipient_address")
+    private String RecipientAddress;
+
+    @Column(name = "sender_note")
+    private String senderNote;
 
     @ManyToOne
     @JoinColumn(name = "source_id")
@@ -49,33 +82,7 @@ public class Package {
     public void setReceivedAt(LocalDate receivedAt) {
         this.receivedAt = receivedAt;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "destination_id")
-    private Office destination;
-
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
-    private User employee;
-
-    @ManyToOne
-    @JoinColumn(name = "sender_id")
-    private User sender;
-
-    @ManyToOne
-
-    @JoinColumn(name = "recipient_id")
-    private User recipient;
-
-    @Column(name = "price", nullable = false)
-    private BigDecimal price;
-    @Column(name = "status", nullable = false)
-    private String status;
-    @Column(name = "send_at", nullable = false)
-    private LocalDate sendAt;
-    @Column(name = "received_at", nullable = false)
-    private LocalDate receivedAt;
-
+    
     public String getSenderAddress() {
         return SenderAddress;
     }
@@ -91,11 +98,6 @@ public class Package {
     public void setRecipientAddress(String recipientAddress) {
         RecipientAddress = recipientAddress;
     }
-
-    @Column(name = "sender_address")
-    private String SenderAddress;
-    @Column(name = "recipient_address")
-    private String RecipientAddress;
 
     public Office getSource() {
         return source;
@@ -135,6 +137,14 @@ public class Package {
 
     public void setRecipient(User recipient) {
         this.recipient = recipient;
+    }
+
+    public String getSenderNote() {
+        return senderNote;
+    }
+
+    public void setSenderNote(String senderNote) {
+        this.senderNote = senderNote;
     }
 
     public int getId() {
