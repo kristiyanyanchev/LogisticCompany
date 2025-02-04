@@ -24,20 +24,16 @@
                     <li class="table-header">
                         <div class="col col-1">Товарителница</div>
                         <div class="col col-2">Подател</div>
-                        <div class="col col-3">Получател</div>
-                        <div class="col col-4">Изпратена на</div>
-                        <div class="col col-5">Статус</div>
-                        <div class="col col-6">Действия</div>
+                        <div class="col col-3">Изпратена на</div>
+                        <div class="col col-4">Статус</div>
+                        <div class="col col-5">Действия</div>
                     </li>
                     <li class="table-row" th:each="package: ${packages}" th:scope="row">
                         <div class="col col-1" data-label="Товарителница" th:text="${package.getId()}"></div>
-                        <div class="col col-2" data-label="Подател" th:text="${package.getSender().getUsername()}">
-                        </div>
-                        <div class="col col-3" data-label="Получател" th:text="${package.getRecipient().getUsername()}">
-                        </div>
-                        <div class="col col-4" data-label="Изпратена на" th:text="${package.getSendAt()}"></div>
-                        <div class="col col-5" data-label="Статус" th:text="${package.getStatus()}"></div>
-                        <div class="col col-6" data-label="Действия">
+                        <div class="col col-2" data-label="Подател" th:text="${package.getSender().getUsername()}"></div>
+                        <div class="col col-3" data-label="Изпратена на" th:text="${package.getSendAt()}"></div>
+                        <div class="col col-4" data-label="Статус" th:text="${package.getStatus()}"></div>
+                        <div class="col col-5" data-label="Действия">
                             <a th:href="@{'/package/details/' + ${package.getId()}}">Детайли</a>
                         </div>
                     </li>
