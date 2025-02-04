@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/footer.css}" href="../../static/css/footer.css">
+    <link rel="stylesheet" th:href="@{/css/nav.css}" href="../../static/css/nav.css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" href="../../static/css/login.css" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/reset.css}" href="../../static/css/typography.css" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/typography.css}" href="../../static/css/reset.css" />
@@ -12,6 +14,7 @@
     <title>Login</title>
 </head>
 <body>
+    <header class="site-header" th:replace="~{fragments/header :: header}"></header>
     <div class="form-wrapper">
         <div class="form-header">
             <div class="img-wrapper">
@@ -20,13 +23,13 @@
             <h3 class="company-name">Logistic Company</h3>
         </div>
         <form class="form" th:action="@{/login}" th:object="${dto}" method="post">
-            <h2>Login</h2>
+            <h2>Вход</h2>
 
             <div class="inputs">
                 <div class="input-wrapper">
                     <input type="text" class="form-control" aria-label="" id="username-text" th:value="${dto.getUsername()}"
                     th:field="*{username}" required />
-                    <label for="username-text" class="input-group-text">Username</label>
+                    <label for="username-text" class="input-group-text">Потребителско име</label>
                     <div class="invalid-feedback">
                         <i class="fa-solid fa-circle-info"></i> 
                         <span class="bubble-error"></span> 
@@ -35,7 +38,7 @@
     
                 <div class="input-wrapper">
                     <input type="password" class="form-control" id="inputPassword1" th:field="*{password}" required />
-                    <label for="inputPassword1" class="form-label">Password</label>
+                    <label for="inputPassword1" class="form-label">Парола</label>
                     <div class="invalid-feedback">
                         <i class="fa-solid fa-circle-info"></i> 
                         <span class="bubble-error"></span> 
@@ -43,12 +46,14 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-submit">Submit</button>
+            <button type="submit" class="btn btn-submit">Вход</button>
             <div class="form-footer">
-                <p>Don't have an account? <a th:href="@{/register}" >Register</a></p>
+                <p>Нямате акаунт? <a th:href="@{/register}" >Регистрация</a></p>
             </div>
         </form>
     </div>
+
+    <footer class="site-footer" th:replace="~{fragments/footer :: footer}"></footer>
     <script th:src="@{/js/inputValidation.js}"></script>
 </body>
 </html>
