@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../../static/css/nav.css">
-    
+
     <title>Document</title>
 </head>
 
@@ -29,10 +29,20 @@
                     <li class="dropdown">
                         <button class="dropdown-button">Още <span>&#9662;</span></button>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Профил</a></li>
-                            <li><a href="#">Настройки</a></li>
-                            <li><a href="#">Помощ</a></li>
-                            <li><a href="#" class="logout">Изход</a></li>
+                            <li><a class="dropdown-item mobile-only" href="/users/employees">Get All Employees</a></li>
+                            <li><a class="dropdown-item mobile-only" href="/users/clients">Get All Clients</a></li>
+                            <li><a class="dropdown-item mobile-only" href="/package/getPackagesRegisteredByМе">Get All
+                                    Packages Registered By Me</a></li>
+                            <li><a class="dropdown-item mobile-only" href="/package/getPackagesSendButNotDelivered">Get
+                                    Not Delivered Packages</a></li>
+                            <li><a class="dropdown-item mobile-only" href="/package/getPackagesSendBySearch">Get
+                                    Packages Send By Client</a></li>
+                            <li><a class="dropdown-item mobile-only" href="/package/getPackagesReceivedBySearch">Get
+                                    Packages Received By Client</a></li>
+                            <li><a class="dropdown-item mobile-only" href="/package/getPackagesRegisteredBySearch">Get
+                                    Packages Registered by Employee</a></li>
+                            <li><a class="dropdown-item mobile-only" href="/package/incomeInput">Get Company Income</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>

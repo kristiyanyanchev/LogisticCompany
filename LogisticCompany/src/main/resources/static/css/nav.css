@@ -72,16 +72,20 @@
 .dropdown-menu {
     position: absolute;
     left: 50%;
+    display: flex;
+    justify-content: space-evenly;
     margin-top: 2.5em;
     padding: 0.5em;
     list-style-type: none;
     width: 160px; /* w-40 */
-    height: 200px;
+    height: auto;
     background-color: #52489C;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
     border-radius: 6px; /* rounded-md */
     display: none; /* Hide by default */
+    z-index: 10;
 }
+
 
 .dropdown-button{
     background: transparent;
@@ -94,9 +98,8 @@
 }
 
 .dropdown-menu.show {
-    display: block; /* Show when active */
+    display: flex; 
+    gap: 1em;
+    flex-direction: column;
+    justify-content: space-evenly;/* Show when active */
 }
-
-
-  
-  

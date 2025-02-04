@@ -11,28 +11,7 @@
     <title>Промените са запазени успешно</title>
 </head>
 <body>
-    <header class="site-header">
-        <nav class="navbar">
-            <div class="logo-wrapper">
-                <a href="profile.html" class="logo"><img src="../../static/images/logo.png" alt=""></a>
-                <h2>Logistic Company</h2>
-            </div>
-            <div class="menu-items-wrapper">
-                <ul class="menu-items">
-                    <li><a href="../home/index.html">Начало</a></li>
-                    <li><a href="index.html">Услуги</a></li>
-                    <li><a href="index.html">Офиси и автомати</a></li>
-                    <li><a href="index.html">За нас</a></li>
-                </ul>
-            </div>
-            <div class="auth-items-wrapper">
-                <ul class="auth-items">
-                    <li><a href="../user/login.html">Вход</a></li>
-                    <li><a href="../user/register.html">Регистрация</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <header class="site-header" th:replace="~{fragments/header :: header}"></header>
 
     <main class="main">
         <div id="card" class="animated fadeIn">
@@ -67,5 +46,7 @@
     </main>
 
     <footer class="site-footer" th:replace="~{fragments/footer :: footer}"></footer>
+    
+    <script th:src="@{/js/dropDown.js}"></script>
 </body>
 </html>
