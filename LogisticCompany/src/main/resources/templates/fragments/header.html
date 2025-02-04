@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../static/css/nav.css">
     
     <title>Document</title>
 </head>
@@ -23,7 +25,16 @@
                         <a th:href="|@{/package/getPackages/{userId}(userId=${user.id})}|">Преглед на пратки</a>
                     </li>
                     <li><a th:href="@{/office}">Офиси и автомати</a></li>
-                    <li><a href="index.html">За нас</a></li>
+                    <li><a href="../home/index.html">За нас</a></li>
+                    <li class="dropdown">
+                        <button class="dropdown-button">Още <span>&#9662;</span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Профил</a></li>
+                            <li><a href="#">Настройки</a></li>
+                            <li><a href="#">Помощ</a></li>
+                            <li><a href="#" class="logout">Изход</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <div class="auth-items-wrapper">
@@ -47,6 +58,9 @@
             </div>
         </nav>
     </header>
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="../../static/js/dropDown.js"></script>
 </body>
 
 </html>
