@@ -44,6 +44,10 @@ public class UserService {
         UserDTO userDTO = new UserDTO();
         userDTO.setId(id);
         userDTO.setUsername(user.getUsername());
+        userDTO.setEmail(user.getEmail());
+        userDTO.setPhoneNumber(user.getPhoneNumber());
+        userDTO.setFirstName(user.getFirstName());
+        userDTO.setLastName(user.getLastName());
         userDTO.setRole(user.getRole());
         userDTO.setOffice(user.getRole().equals("client") ? "": user.getOffice().getName());
 
@@ -58,6 +62,10 @@ public class UserService {
         User user = userDTO.getId() == null ? new User(): userRepository.findById(userDTO.getId()).orElse(null);
         List<Authority> auths = authoritiesRepository.findByUsername(user);
         user.setUsername(userDTO.getUsername());
+        user.setEmail(userDTO.getEmail());
+        user.setPhoneNumber(userDTO.getPhoneNumber());
+        user.setFirstName(userDTO.getFirstName());
+        user.setLastName(userDTO.getLastName());
         user.setRole(Objects.equals(userDTO.getRole(),"") ? "client" : userDTO.getRole());
         if (Objects.equals(userDTO.getRole(), "employee") && ( userDTO.getOffice() == null || userDTO.getOffice().isEmpty())) {
             userDTO.setOffice("Default");
